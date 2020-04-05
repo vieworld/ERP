@@ -1,0 +1,27 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.DocumentNumber;
+import com.warehouse.pojo.DocumentPrefix;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.HashMap;
+import java.util.List;
+
+public interface DocumentNumberMapper {
+
+    DocumentNumber getDocumentNumber(@Param("id") String id);
+
+    //查询
+    List<DocumentNumber> getAllUserDocument(@Param(value = "map") HashMap<String, Object> map);
+
+
+    DocumentNumber getDocumentInfo(DocumentNumber number);
+
+    String getDocumentName(DocumentNumber documentNumber);
+
+    void updateDocumentDate(DocumentNumber number);
+
+    void addDocumentPrefix(DocumentNumber number);
+
+    void updateDocumentPrefix(DocumentPrefix documentPrefix);
+}

@@ -1,0 +1,41 @@
+package com.warehouse.filter;
+
+import javax.servlet.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+
+public class LoginFilter implements Filter {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest request1 = (HttpServletRequest) request;
+        String token = request1.getHeader("token");
+        String uri = request1.getRequestURI();
+//        System.out.println("==================>URL:"+uri);
+        if(!uri.equals("/user/login") || !uri.equals("/user/register")) {
+            if (token != null) {
+                Cookie[] cookies = request1.getCookies();
+                for (Cookie cookie : cookies) {
+                    if (token.equals(cookie.getValue())) {
+                        chain.doFilter(request1, response);
+                        return;
+                    }
+                }
+            }
+            request.setAttribute("msg", "请登录");
+            request.getRequestDispatcher("/error").forward(request1, response);
+            return;
+        }
+        chain.doFilter(request1, response);
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+}

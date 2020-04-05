@@ -1,0 +1,17 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Employee;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface EmployeeMapper {
+
+    List<Employee> getAllEmployeeInfo(@Param(value = "username") String username);
+
+    void addEmployeeInfo(Employee employee);
+
+    void updateEmployeeInfo(Employee employee);
+
+    void deleteEmployeeInfo(@Param(value = "id") String id);
+}

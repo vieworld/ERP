@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class Item {
+    private String itemId;
+
+    private String itemName;
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId == null ? null : itemId.trim();
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName == null ? null : itemName.trim();
+    }
+}

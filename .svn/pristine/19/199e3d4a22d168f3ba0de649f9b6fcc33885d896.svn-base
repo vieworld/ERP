@@ -1,0 +1,60 @@
+package com.warehouse.MSG;
+
+import com.github.pagehelper.PageInfo;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.warehouse.Vo.*;
+import com.warehouse.mapper.AddressMapper;
+import com.warehouse.mapper.PurchaseMapper;
+import com.warehouse.mapper.UserMapper;
+import com.warehouse.pojo.*;
+import com.warehouse.service.*;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:applicationContext.xml")
+public class test {
+
+    @Autowired
+    private AddressService addressService;
+
+    @Test
+    public void test1() throws IOException {
+
+//        Address address = new Address();
+////        address.setUsername("123");
+//        address.setAdDetailed("从化区");
+//        address.setAdLocation("广州市");
+//        address.setAdState(1);
+//        address.setAdId("B71BC677B9BB4E8E8D71D94B44800335");
+//        addressService.updateAddressInfo(address);
+
+//        address.setAdState(0);
+//
+//        addressService.addAddressInfo(address);
+
+//        List<Address> address = addressService.getAllAddress("123");
+//        System.out.println("==================>");
+//
+//        for (Address address1 : address) {
+//            System.out.println(address1.getAdLocation());
+//            System.out.println(address1.getAdDetailed());
+//        }
+//        System.out.println("==================>");
+//        System.out.println("186E7FCE510643978910DFBB753D887A");
+
+        addressService.deleteAddressInfo("186E7FCE510643978910DFBB753D887A");
+
+
+    }
+
+}

@@ -1,0 +1,23 @@
+package com.warehouse.service.impl;
+
+import com.warehouse.Vo.CustomVo;
+import com.warehouse.mapper.CustomMapper;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.CustomService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CustomSrviceImpl implements CustomService {
+
+    @Autowired
+    private CustomMapper customMapper;
+
+
+    @Override
+    public List<String> getAllPurchaseCustomInfo(Users user) {
+        return customMapper.getAllPurchaseCustomInfo(user.getUsername());
+    }
+}

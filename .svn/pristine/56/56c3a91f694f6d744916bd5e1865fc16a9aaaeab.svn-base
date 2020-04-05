@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Enclosure;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface EnclosureMapper {
+
+    void addEnclosureList(@Param(value = "list") List<Enclosure> list);
+}

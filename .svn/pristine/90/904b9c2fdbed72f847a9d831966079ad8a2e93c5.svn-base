@@ -1,0 +1,4 @@
+﻿package com.warehouse.mapper;
+
+public interface PurchaseMapper {
+}

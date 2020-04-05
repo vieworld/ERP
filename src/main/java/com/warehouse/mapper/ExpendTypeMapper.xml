@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ExpendTypeMapper">
+    <select id="getAllExpendTypeInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.ExpendType">
+        select expt_id, expt_name from expendType
+        where username = #{username}
+    </select>
+
+    <insert id="addExpendTypeInfo" parameterType="com.warehouse.pojo.ExpendType">
+        insert into expendType(expt_id, expt_name, username)values(
+        #{exptId}, #{exptName}, #{username}
+        )
+    </insert>
+
+    <update id="updateExpendTypeInfo" parameterType="com.warehouse.pojo.ExpendType">
+        update expendType
+        set expt_name = #{exptName}
+        where expt_id = #{exptId}
+    </update>
+
+    <delete id="deleteExpendTypeInfo" parameterType="java.lang.String">
+        delete from expendType
+        where expt_id = #{id}
+    </delete>
+</mapper>

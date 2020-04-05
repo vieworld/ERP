@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class Staff {
+    private String staId;
+
+    private String staName;
+
+    private String pId;
+
+    public String getStaId() {
+        return staId;
+    }
+
+    public void setStaId(String staId) {
+        this.staId = staId == null ? null : staId.trim();
+    }
+
+    public String getStaName() {
+        return staName;
+    }
+
+    public void setStaName(String staName) {
+        this.staName = staName == null ? null : staName.trim();
+    }
+
+    public String getpId() {
+        return pId;
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId == null ? null : pId.trim();
+    }
+}

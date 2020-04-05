@@ -1,0 +1,34 @@
+package com.warehouse.pojo;
+
+public class DocumentNumber {
+
+    private String docnId;
+
+    private String DocnPrefix;
+
+    private int docnDateType;
+
+    public String getDocnId() {
+        return docnId;
+    }
+
+    public void setDocnId(String docnId) {
+        this.docnId = docnId;
+    }
+
+    public String getDocnPrefix() {
+        return DocnPrefix;
+    }
+
+    public void setDocnPrefix(String docnPrefix) {
+        DocnPrefix = docnPrefix;
+    }
+
+    public int getDocnDateType() {
+        return docnDateType;
+    }
+
+    public void setDocnDateType(int docnDateType) {
+        this.docnDateType = docnDateType;
+    }
+}

@@ -1,0 +1,11 @@
+package com.warehouse.service;
+
+import com.warehouse.pojo.Project;
+import com.warehouse.pojo.Users;
+
+import java.util.List;
+
+public interface ProjectService {
+
+    List<String> getAllProjectInfo(Users users);
+}

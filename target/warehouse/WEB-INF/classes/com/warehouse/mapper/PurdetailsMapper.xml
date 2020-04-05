@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.PurdetailsMapper">
+    <sql id="purdetails">
+        insert into purdetails(pud_id, pud_num, pud_unPrice, pud_price, pud_sumPrice, pud_taxPrice,
+        pud_sumMoney, pud_time, pud_maks, pud_proName,pud_spe,pud_unit,pud_brand, pud_mode,
+        pud_category, pud_code,pud_order, pur_id, so_id, inb_id, out_id, pud_goodsId, pud_quantity, pud_unQuantity)
+        values
+    </sql>
+    <insert id="addPurdetailsList" parameterType="java.util.List">
+        <include refid="purdetails"/>
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.pudId},#{item.pudNum}, #{item.pudUnPrice}, #{item.pudPrice}, #{item.pudSumPrice},#{item.pudTaxPrice},
+            #{item.pudSunMoney}, #{item.pudTime}, #{item.pudMaks}, #{item.pudProName},#{item.pudSpe},#{item.pudUnit},
+            #{item.pudBrand},#{item.pudMode},#{item.pudCategory},#{item.pudCode},#{item.pudOrder},
+            #{item.purId},#{item.soId},#{item.inbId},#{item.outId},#{item.pudGoodsId},#{item.pudQuantity},
+            #{item.pudUnQuantity}
+        </foreach>
+    </insert>
+
+    <select id="getAllProductName" parameterType="java.util.ArrayList" resultType="java.lang.String">
+        select pud_proName from purdetails
+        <where>
+            <foreach collection="allPurchaseId" item="item" index="index" separator="or">
+                pur_id = #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!--更新物品详情入库数量-->
+    <update id="updatePurchaseInbound" parameterType="java.util.List">
+        <foreach collection="list" item="item">
+            update purdetails
+            set pud_quantity = #{item.pudNum}, pud_unQuantity = ((select pud_num from purdetails where pud_id =
+            #{item.pudId})-#{item.pudNum})
+            where pud_id = #{item.pudId}
+        </foreach>
+    </update>
+
+    <update id="updatePurdetailsInfo" parameterType="java.util.List">
+        <foreach collection="purdetailsList" index="index" item="item">
+            update purdetails
+            <set>
+                pud_num = #{item.pudNum}, pud_unPrice = #{item.pudUnPrice}, pud_price=#{item.pudPrice}, pud_sumPrice =
+                #{item.pudSumPrice}, pud_taxPrice = #{item.pudTaxPrice},
+                pud_sumMoney = #{item.pudSunMoney}, pud_time = #{item.pudTime}, pud_maks = #{item.pudMaks}, pud_proName
+                = #{item.pudProName},pud_spe = #{item.pudSpe},pud_unit = #{item.pudUnit},pud_brand = #{item.pudBrand},
+                pud_mode = #{item.pudMode},
+                pud_category = #{item.pudCategory}, pud_code = #{item.pudCode},pud_order = #{item.pudOrder}, so_id =
+                #{item.soId}, inb_id = #{item.inbId}, out_id = #{item.outId}, pud_goodsId = #{item.pudGoodsId},
+                pud_quantity = #{item.pudQuantity}, pud_unQuantity = #{item.pudUnQuantity}
+            </set>
+            <where>
+                pud_id = #{item.pudId}
+            </where>
+        </foreach>
+    </update>
+
+    <!--<insert id="addInboundPurdetailsList" parameterType="list">-->
+    <!--<include refid="purdetails"></include>-->
+    <!--<foreach collection="list" item="item" index="index" separator="," open="(" close=")">-->
+    <!--#{item.pudId},#{item.pudNum}, #{item.pudUnPrice}, #{item.pudPrice}, #{item.pudSumPrice},#{item.pudTaxPrice},-->
+    <!--#{item.pudSunMoney}, #{item.pudTime}, #{item.pudMaks}, #{item.pudProName},#{item.pudSpe},#{item.pudUnit},-->
+    <!--#{item.pudBrand},#{item.pudMode},#{item.pudCategory},#{item.pudCode},#{item.pudOrder},-->
+    <!--#{item.purId},#{item.soId},#{item.inbId},#{item.outId},#{item.pudGoodsId},#{item.inbId}-->
+    <!--</foreach>-->
+    <!--</insert>-->
+</mapper>

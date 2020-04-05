@@ -1,0 +1,73 @@
+package com.warehouse.pojo;
+
+public class Result {
+    private String rId;
+
+    private Integer rNumber;
+
+    private Integer rQuantity;
+
+    private String rResult;
+
+    private String rRemaks;
+
+    private String iId;
+
+    private String giId;
+
+    public String getrId() {
+        return rId;
+    }
+
+    public void setrId(String rId) {
+        this.rId = rId == null ? null : rId.trim();
+    }
+
+    public Integer getrNumber() {
+        return rNumber;
+    }
+
+    public void setrNumber(Integer rNumber) {
+        this.rNumber = rNumber;
+    }
+
+    public Integer getrQuantity() {
+        return rQuantity;
+    }
+
+    public void setrQuantity(Integer rQuantity) {
+        this.rQuantity = rQuantity;
+    }
+
+    public String getrResult() {
+        return rResult;
+    }
+
+    public void setrResult(String rResult) {
+        this.rResult = rResult == null ? null : rResult.trim();
+    }
+
+    public String getrRemaks() {
+        return rRemaks;
+    }
+
+    public void setrRemaks(String rRemaks) {
+        this.rRemaks = rRemaks == null ? null : rRemaks.trim();
+    }
+
+    public String getiId() {
+        return iId;
+    }
+
+    public void setiId(String iId) {
+        this.iId = iId == null ? null : iId.trim();
+    }
+
+    public String getGiId() {
+        return giId;
+    }
+
+    public void setGiId(String giId) {
+        this.giId = giId == null ? null : giId.trim();
+    }
+}

@@ -1,0 +1,115 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Retrieval {
+    private String reId;
+
+    private Date reTime;
+
+    private String reDocnum;
+
+    private String reRemaks;
+
+    private String reCounum;
+
+    private Integer reType;
+
+    private String epId;
+
+    private String itemId;
+
+    private String gId;
+
+    private String buId;
+
+    private String ibId;
+
+    public String getReId() {
+        return reId;
+    }
+
+    public void setReId(String reId) {
+        this.reId = reId == null ? null : reId.trim();
+    }
+
+    public Date getReTime() {
+        return reTime;
+    }
+
+    public void setReTime(Date reTime) {
+        this.reTime = reTime;
+    }
+
+    public String getReDocnum() {
+        return reDocnum;
+    }
+
+    public void setReDocnum(String reDocnum) {
+        this.reDocnum = reDocnum == null ? null : reDocnum.trim();
+    }
+
+    public String getReRemaks() {
+        return reRemaks;
+    }
+
+    public void setReRemaks(String reRemaks) {
+        this.reRemaks = reRemaks == null ? null : reRemaks.trim();
+    }
+
+    public String getReCounum() {
+        return reCounum;
+    }
+
+    public void setReCounum(String reCounum) {
+        this.reCounum = reCounum == null ? null : reCounum.trim();
+    }
+
+    public Integer getReType() {
+        return reType;
+    }
+
+    public void setReType(Integer reType) {
+        this.reType = reType;
+    }
+
+    public String getEpId() {
+        return epId;
+    }
+
+    public void setEpId(String epId) {
+        this.epId = epId == null ? null : epId.trim();
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId == null ? null : itemId.trim();
+    }
+
+    public String getgId() {
+        return gId;
+    }
+
+    public void setgId(String gId) {
+        this.gId = gId == null ? null : gId.trim();
+    }
+
+    public String getBuId() {
+        return buId;
+    }
+
+    public void setBuId(String buId) {
+        this.buId = buId == null ? null : buId.trim();
+    }
+
+    public String getIbId() {
+        return ibId;
+    }
+
+    public void setIbId(String ibId) {
+        this.ibId = ibId == null ? null : ibId.trim();
+    }
+}

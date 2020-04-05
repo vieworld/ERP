@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class AllocationItems {
+    private String allId;
+
+    private Integer allNum;
+
+    private String aId;
+
+    public String getAllId() {
+        return allId;
+    }
+
+    public void setAllId(String allId) {
+        this.allId = allId == null ? null : allId.trim();
+    }
+
+    public Integer getAllNum() {
+        return allNum;
+    }
+
+    public void setAllNum(Integer allNum) {
+        this.allNum = allNum;
+    }
+
+    public String getaId() {
+        return aId;
+    }
+
+    public void setaId(String aId) {
+        this.aId = aId == null ? null : aId.trim();
+    }
+}

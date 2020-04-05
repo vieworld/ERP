@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.CustomerLevelMapper">
+
+    <select id="getAllCustomerLevelInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.CustomerLevel">
+        select l_id, l_name, l_discount from customerLevel
+        where username = #{username}
+    </select>
+
+    <insert id="addCustomerLevelInfo" parameterType="com.warehouse.pojo.CustomerLevel">
+        insert into customerLevel(l_id, l_name, l_discount, username)values(
+            #{lId}, #{lName}, #{lDiscount}, #{username}
+        )
+    </insert>
+
+    <update id="updateCustomerLevelInfo" parameterType="com.warehouse.pojo.CustomerLevel">
+        update customerLevel
+        <set>
+            <if test="lName != null and lName != ''">
+                l_name = #{lName}
+            </if>
+            <if test="lDiscount != null and lDiscount != ''">
+                ,l_discount = #{lDiscount}
+            </if>
+        </set>
+        where l_id = #{lId}
+    </update>
+
+    <delete id="deleteCustomerLevelInfo" parameterType="java.lang.String">
+        delete from customerLevel
+        where l_id = #{id}
+    </delete>
+</mapper>

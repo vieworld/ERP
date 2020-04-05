@@ -1,0 +1,85 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Allocation {
+    private String aId;
+
+    private Date aDate;
+
+    private String aRecall;
+
+    private String aCall;
+
+    private String aCode;
+
+    private String aName;
+
+    private String aMarks;
+
+    private String eId;
+
+    public String getaId() {
+        return aId;
+    }
+
+    public void setaId(String aId) {
+        this.aId = aId == null ? null : aId.trim();
+    }
+
+    public Date getaDate() {
+        return aDate;
+    }
+
+    public void setaDate(Date aDate) {
+        this.aDate = aDate;
+    }
+
+    public String getaRecall() {
+        return aRecall;
+    }
+
+    public void setaRecall(String aRecall) {
+        this.aRecall = aRecall == null ? null : aRecall.trim();
+    }
+
+    public String getaCall() {
+        return aCall;
+    }
+
+    public void setaCall(String aCall) {
+        this.aCall = aCall == null ? null : aCall.trim();
+    }
+
+    public String getaCode() {
+        return aCode;
+    }
+
+    public void setaCode(String aCode) {
+        this.aCode = aCode == null ? null : aCode.trim();
+    }
+
+    public String getaName() {
+        return aName;
+    }
+
+    public void setaName(String aName) {
+        this.aName = aName == null ? null : aName.trim();
+    }
+
+    public String getaMarks() {
+        return aMarks;
+    }
+
+    public void setaMarks(String aMarks) {
+        this.aMarks = aMarks == null ? null : aMarks.trim();
+    }
+
+    public String geteId() {
+        return eId;
+    }
+
+    public void seteId(String eId) {
+        this.eId = eId == null ? null : eId.trim();
+    }
+}

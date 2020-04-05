@@ -1,0 +1,9 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.DocumentNumber;
+import org.apache.ibatis.annotations.Param;
+
+public interface DocumentNumberMapper {
+
+    DocumentNumber getDocumentNumber(@Param("id") String id);
+}

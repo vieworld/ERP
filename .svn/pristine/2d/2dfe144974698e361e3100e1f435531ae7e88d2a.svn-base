@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class Suremaks {
+    private String srId;
+
+    private String srContent;
+
+    private String spId;
+
+    public String getSrId() {
+        return srId;
+    }
+
+    public void setSrId(String srId) {
+        this.srId = srId == null ? null : srId.trim();
+    }
+
+    public String getSrContent() {
+        return srContent;
+    }
+
+    public void setSrContent(String srContent) {
+        this.srContent = srContent == null ? null : srContent.trim();
+    }
+
+    public String getSpId() {
+        return spId;
+    }
+
+    public void setSpId(String spId) {
+        this.spId = spId == null ? null : spId.trim();
+    }
+}

@@ -1,0 +1,228 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+import java.util.List;
+
+public class Purdetails {
+    private String pudId;
+
+    private Integer pudNum;
+
+    private Float pudUnPrice;
+
+    private Float pudPrice;
+
+    private Float pudSumPrice;
+
+    private Float pudTaxPrice;
+
+    private Float pudSunMoney;
+
+    private Date pudTime;
+
+    private String pudMaks;
+
+    private String pudProName;
+
+    private String pudSpe;
+
+    private String pudUnit;
+
+    private String pudBrand;
+
+    private String pudMode;
+
+    private String pudCategory;
+
+    private String pudCode;
+
+    private String pudOrder;
+
+    private String pudGoodsId;
+
+    private String purId;
+
+    private String soId;
+
+    private String inbId;
+
+    private String outId;
+
+    public Float getPudSumPrice() {
+        return pudSumPrice;
+    }
+
+    public void setPudSumPrice(Float pudSumPrice) {
+        this.pudSumPrice = pudSumPrice;
+    }
+
+    public String getPudId() {
+        return pudId;
+    }
+
+    public void setPudId(String pudId) {
+        this.pudId = pudId == null ? null : pudId.trim();
+    }
+
+    public Integer getPudNum() {
+        return pudNum;
+    }
+
+    public void setPudNum(Integer pudNum) {
+        this.pudNum = pudNum;
+    }
+
+    public Float getPudUnPrice() {
+        return pudUnPrice;
+    }
+
+    public void setPudUnPrice(Float pudUnPrice) {
+        this.pudUnPrice = pudUnPrice;
+    }
+
+    public Float getPudSunMoney() {
+        return pudSunMoney;
+    }
+
+    public void setPudSunMoney(Float pudSunMoney) {
+        this.pudSunMoney = pudSunMoney;
+    }
+
+    public String getPudProName() {
+        return pudProName;
+    }
+
+    public void setPudProName(String pudProName) {
+        this.pudProName = pudProName;
+    }
+
+    public Float getPudPrice() {
+        return pudPrice;
+    }
+
+    public void setPudPrice(Float pudPrice) {
+        this.pudPrice = pudPrice;
+    }
+
+    public Float getPudTaxPrice() {
+        return pudTaxPrice;
+    }
+
+    public void setPudTaxPrice(Float pudTaxPrice) {
+        this.pudTaxPrice = pudTaxPrice;
+    }
+
+    public Date getPudTime() {
+        return pudTime;
+    }
+
+    public void setPudTime(Date pudTime) {
+        this.pudTime = pudTime;
+    }
+
+    public String getPudMaks() {
+        return pudMaks;
+    }
+
+    public void setPudMaks(String pudMaks) {
+        this.pudMaks = pudMaks == null ? null : pudMaks.trim();
+    }
+
+
+
+    public String getPudSpe() {
+        return pudSpe;
+    }
+
+    public void setPudSpe(String pudSpe) {
+        this.pudSpe = pudSpe;
+    }
+
+    public String getPudUnit() {
+        return pudUnit;
+    }
+
+    public void setPudUnit(String pudUnit) {
+        this.pudUnit = pudUnit;
+    }
+
+    public String getPudBrand() {
+        return pudBrand;
+    }
+
+    public void setPudBrand(String pudBrand) {
+        this.pudBrand = pudBrand;
+    }
+
+    public String getPudMode() {
+        return pudMode;
+    }
+
+    public void setPudMode(String pudMode) {
+        this.pudMode = pudMode;
+    }
+
+    public String getPudCategory() {
+        return pudCategory;
+    }
+
+    public void setPudCategory(String pudCategory) {
+        this.pudCategory = pudCategory;
+    }
+
+    public String getPudCode() {
+        return pudCode;
+    }
+
+    public void setPudCode(String pudCode) {
+        this.pudCode = pudCode;
+    }
+
+    public String getPudOrder() {
+        return pudOrder;
+    }
+
+    public void setPudOrder(String pudOrder) {
+        this.pudOrder = pudOrder;
+    }
+
+    public String getPudGoodsId() {
+        return pudGoodsId;
+    }
+
+    public void setPudGoodsId(String pudGoodsId) {
+        this.pudGoodsId = pudGoodsId;
+    }
+
+    public String getPurId() {
+        return purId;
+    }
+
+    public void setPurId(String purId) {
+        this.purId = purId;
+    }
+
+    public String getSoId() {
+        return soId;
+    }
+
+    public void setSoId(String soId) {
+        this.soId = soId;
+    }
+
+    public String getInbId() {
+        return inbId;
+    }
+
+    public void setInbId(String inbId) {
+        this.inbId = inbId;
+    }
+
+    public String getOutId() {
+        return outId;
+    }
+
+    public void setOutId(String outId) {
+        this.outId = outId;
+    }
+}

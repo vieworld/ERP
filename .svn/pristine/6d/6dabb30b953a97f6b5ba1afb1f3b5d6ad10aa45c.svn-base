@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.EnclosureMapper">
+
+    <insert id="addEnclosureList" parameterType="list">
+        insert into enclosure(en_id,en_content, pur_id)values
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #(item.en_id),#{item.encontent},#{item.pur_id}
+        </foreach>
+    </insert>
+
+</mapper>

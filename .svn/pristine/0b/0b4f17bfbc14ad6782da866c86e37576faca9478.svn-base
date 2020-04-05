@@ -1,0 +1,23 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Purchase;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.HashMap;
+
+public interface PurchaseMapper {
+    /**
+     * 查询今天添加的单数
+     * @param map
+     * @return
+     */
+    int getPurchaseCount(@Param(value = "map") HashMap<String, Object> map);
+
+    /**
+     * 添加采购单信息
+     * @param purchase
+     */
+    Integer addPurchase(Purchase purchase);
+
+    Purchase getPurchaseInfo(String purId);
+}

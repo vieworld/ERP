@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ProjectMapper">
+
+    <select id="getAllProjectInfo" parameterType="java.lang.String" resultType="java.lang.String">
+        select pr_name from project
+        <where>
+            <if test="username != null and username!=''">
+                username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getProjectInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.Project">
+        select pr_name, pr_id, username from project
+        <where>
+            <if test="username != null and username!=''">
+                username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateProject" parameterType="com.warehouse.pojo.Project">
+        update project
+        set pr_name = #{prName}
+        where pr_id = #{prId}
+    </update>
+
+    <delete id="deleteProject" parameterType="java.lang.String">
+        delete from project
+        where pr_id = #{id}
+    </delete>
+
+    <insert id="addProject" parameterType="com.warehouse.pojo.Project">
+        insert into project(pr_id, pr_name, username)values(
+        #{prId},#{prName}, #{username}
+        )
+    </insert>
+</mapper>

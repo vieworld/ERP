@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.SaleOrderMapper">
+    <!--查询当天添加的采购单数-->
+    <select id="getSaleOrderCount"  resultType="java.lang.Integer">
+        select count(*) from saleOrder
+        where username = #{username, jdbcType=VARCHAR} and so_time = #{soTime, jdbcType=DATE}
+    </select>
+
+    <!--添加采购订单-->
+    <insert id="addSaleOrderInfo" parameterType="com.warehouse.pojo.SaleOrder">
+        <selectKey resultType="java.lang.Integer" order="BEFORE">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into saleOrder(so_id, so_time, so_code, so_address, so_project,so_method,
+        so_order, so_name, so_contacts, so_phone, so_maks,so_state, so_makeDate, so_modifier, so_modifierDate, so_num,
+        so_sum, username, c_id, so_customerName, so_customerPhone)values(#{soId, jdbcType=VARCHAR}, #{soTime, jdbcType = DATE}, #{soCode, jdbcType=VARCHAR},  #{soAddress, jdbcType = VARCHAR}, #{soProject, jdbcType=VARCHAR},
+        #{soMethod, jdbcType = VARCHAR}, #{soOrder, jdbcType = VARCHAR}, #{soName, jdbcType = VARCHAR}, #{soContacts, jdbcType=VARCHAR},#{soPhone, jdbcType=VARCHAR}, #{soMaks, jdbcType=VARCHAR},
+        #{soState, jdbcType=INTEGER},#{soMakeDate, jdbcType=DATE},#{soModifier, jdbcType=VARCHAR},#{soModifierDate, jdbcType=DATE},#{soNum, jdbcType=INTEGER},
+        #{soSum, jdbcType=FLOAT},#{username, jdbcType=VARCHAR},#{cId, jdbcType=VARCHAR},#{soCustomerName, jdbcType=VARCHAR},#{soCustomerPhone, jdbcType=VARCHAR}
+        )
+    </insert>
+    <resultMap id="saleOrder" type="com.warehouse.pojo.SaleOrder">
+        <id property="soId" column="so_id"/>
+        <result property="soTime" column="so_time"/>
+        <result property="soCode" column="so_code"/>
+        <result property="soAddress" column="so_address"/>
+        <result property="soProject" column="so_project"/>
+        <result property="soMethod" column="so_method"/>
+        <result property="soOrder" column="so_order"/>
+        <result property="soName" column="so_name"/>
+        <result property="soContacts" column="so_contacts"/>
+        <result property="soPhone" column="so_phone"/>
+        <result property="soMaks" column="so_maks"/>
+        <result property="soState" column="so_state"/>
+        <result property="soMakeDate" column="so_makeDate"/>
+        <result property="soModifier" column="so_modifier"/>
+        <result property="soModifierDate" column="so_modifierDate"/>
+        <result property="soNum" column="so_num"/>
+        <result property="soSum" column="so_sum"/>
+        <result property="cId" column="c_id"/>
+        <result property="soCustomerName" column="so_customerName"/>
+        <result property="soCustomerPhone" column="so_customerPhone"/>
+
+        <collection property="purdetailsList"  ofType="com.warehouse.pojo.Purdetails">
+            <id property="pudId" column="pud_id"/>
+            <result property="pudNum" column="pud_num" />
+            <result property="pudUnPrice" column="pud_unPrice"/>
+            <result property="pudPrice" column="pud_price" />
+            <result property="pudSumPrice" column="pud_sumPrice"/>
+            <result property="pudTaxPrice" column="pud_taxPrice"/>
+            <result property="pudSumMoney" column="pud_sumMoney"/>
+            <result property="pudTime" column="pud_time" />
+            <result property="pudMaks" column="pud_maks"/>
+            <result property="pudProName" column="pud_proName"/>
+            <result property="pudSpe" column="pud_spe"/>
+            <result property="pudUnit" column="pud_unit"/>
+            <result property="pudBrand" column="pud_brand"/>
+            <result property="pudMode" column="pud_mode"/>
+            <result property="pudCategory" column="pud_category"/>
+            <result property="pudCode" column="pud_code"/>
+            <result property="pudOrder" column="pud_order"/>
+        </collection>
+        <collection property="customList" ofType="com.warehouse.pojo.Custom">
+            <!--<id property="cusId" column="cus_id"/>-->
+            <result property="cusName" column="cus_name"/>
+            <result property="cusContent" column="cus_content"/>
+        </collection>
+
+        <collection property="enclosureList" ofType="com.warehouse.pojo.Enclosure">
+            <!--<id property="enId" column="en_id"/>-->
+            <result property="enName" column="en_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="getSaleOrderInfo" parameterType="java.lang.String" resultMap="saleOrder">
+        select a.so_id, so_time, so_code, so_address, so_project, so_method, so_order, so_name, so_contacts, so_phone, so_maks, so_state, so_makeDate, so_modifier, so_modifierDate, so_num, so_sum, a.c_id, so_customerName, so_customerPhone,
+        b.pud_id,b.pud_num,b.pud_unPrice,b.pud_price,b.pud_sumPrice,b.pud_taxPrice,b.pud_sumMoney,b.pud_time,b.pud_maks,
+        b.pud_proName,b.pud_spe,b.pud_unit,b.pud_brand,b.pud_mode,b.pud_category,b.pud_code,b.pud_order,
+        c.cus_id,c.cus_name,c.cus_content,d.en_id,d.en_name from saleOrder as a
+        left join purdetails as b
+        on a.so_id = b.so_id
+        left join custom as c
+        on a.so_id = c.so_id
+        left join enclosure as d
+        on d.so_id = a.so_id
+        <where>
+            a.so_id = #{id}
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class Experess {
+    private String expId;
+
+    private String expName;
+
+    public String getExpId() {
+        return expId;
+    }
+
+    public void setExpId(String expId) {
+        this.expId = expId == null ? null : expId.trim();
+    }
+
+    public String getExpName() {
+        return expName;
+    }
+
+    public void setExpName(String expName) {
+        this.expName = expName == null ? null : expName.trim();
+    }
+}

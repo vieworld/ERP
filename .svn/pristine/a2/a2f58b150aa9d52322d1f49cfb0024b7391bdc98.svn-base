@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.DocumentNumberMapper">
+
+    <sql id="documentNumber" >
+        select a.docn_id, docn_dateType, dp_id, docn_type, b.dp_name from documentNumber as a left join documentPrefix as b
+        on a.docn_id = b.docn_id
+    </sql>
+
+    <resultMap id="document" type="com.warehouse.pojo.DocumentNumber">
+        <id property="docnId" column="docn_id"/>
+        <result property="docnDateType" column="docn_dateType"/>
+        <result property="docnType" column="docn_Type"/>
+        <collection property="documentPrefixList" ofType="com.warehouse.pojo.DocumentPrefix">
+            <id property="dpId" column="dp_id"/>
+            <result property="dpName" column="dp_name"/>
+            <result property="dpType" column="dp_type"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="documentInfo" type="com.warehouse.pojo.DocumentNumber">
+        <id property="docnId" column="docn_id"/>
+        <result property="docnDateType" column="docn_dateType"/>
+        <result property="docnType" column="docn_Type"/>
+        <association property="documentPrefix" javaType="com.warehouse.pojo.DocumentPrefix">
+            <id property="dpId" column="dp_id"/>
+            <result property="dpName" column="dp_name"/>
+            <result property="dpType" column="dp_type"/>
+        </association>
+    </resultMap>
+
+
+    <select id="getDocumentNumber" parameterType="java.lang.String" resultMap="documentInfo">
+        <include refid="documentNumber" />
+        where docn_type= #{id}
+        and dp_type = 0
+    </select>
+
+    <select id="getDocumentNumberUser" parameterType="java.lang.String" resultMap="documentInfo">
+        <include refid="documentNumber" />
+        where docn_type= #{id}
+        and dp_type = 1 and username = #{username}
+    </select>
+
+    <select id="getAllUserDocument" parameterType="map" resultMap="document">
+        select a.docn_id, docn_dateType, dp_id, docn_type, b.dp_name from documentNumber as a left join documentPrefix as b
+        on a.docn_id = b.docn_id
+        <where>
+            (docn_type = #{map.CK} or docn_type = #{map.RK} or docn_type = #{map.CG} or docn_type = #{map.XS})
+            <if test="map.username != null and map.username != ''">
+                or username = #{map.username}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getDocumentInfo" parameterType="com.warehouse.pojo.DocumentNumber" resultMap="documentInfo">
+        select a.docn_id, docn_dateType, dp_id, docn_type, b.dp_name from documentNumber as a left join documentPrefix as b
+        on a.docn_id = b.docn_id
+        <where>
+            <!--docn_type = #{docnType}-->
+            <if test="documentPrefix.username != null and documentPrefix.username != ''">
+                username = #{documentPrefix.username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getDocumentName" parameterType="com.warehouse.pojo.DocumentNumber" resultType="java.lang.String">
+        select dp_name from documentPrefix
+        where docn_id = #{docnId} and username is null
+    </select>
+
+    <update id="updateDocumentDate" parameterType="com.warehouse.pojo.DocumentNumber">
+        update documentNumber
+        set docn_dateType = #{docnDateType}
+        where docn_id = #{docnId}
+    </update>
+
+    <insert id="addDocumentPrefix"  parameterType="com.warehouse.pojo.DocumentNumber">
+        insert into documentPrefix(dp_id, dp_name,dp_type, username, docn_id)values(
+            #{documentPrefix.dpId}, #{documentPrefix.dpName}, #{documentPrefix.dpType}, #{username}, #{docnId}
+        );
+    </insert>
+
+    <update id="updateDocumentPrefix" parameterType="com.warehouse.pojo.DocumentPrefix">
+        update documentPrefix
+        set dp_name = #{dpName}
+        where dp_id = #{dpId} and username = #{username}
+    </update>
+
+    <select id="getDocumentPrefix" resultType="com.warehouse.pojo.DocumentPrefix">
+        select dp_id, dp_name, dp_type, username, docn_id from documentPrefix
+        where username = #{username} and dp_type=#{type}
+        and dp_type = 1
+    </select>
+</mapper>

@@ -1,0 +1,26 @@
+package com.warehouse.service.impl;
+
+import com.warehouse.Vo.ChartVo;
+import com.warehouse.mapper.IndexMapper;
+import com.warehouse.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class IndexServiceImpl implements IndexService {
+
+    @Autowired
+    private IndexMapper indexMapper;
+
+
+    @Override
+    public ChartVo getSaleChart(String time) {
+        if (time.equals("month")){
+
+        }else if(time.equals("year")){
+
+        }
+
+        return null;
+    }
+}

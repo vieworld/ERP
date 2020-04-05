@@ -1,0 +1,15 @@
+package com.warehouse.service;
+
+import com.warehouse.pojo.TaxRate;
+import com.warehouse.pojo.Users;
+
+import java.util.List;
+
+public interface TaxRateService {
+    /**
+     * 获取用户自定义的税率信息
+     * @param user
+     * @return
+     */
+    List<String> getAllTaxRateInfo(Users user);
+}

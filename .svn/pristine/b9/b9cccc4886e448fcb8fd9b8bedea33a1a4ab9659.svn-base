@@ -1,0 +1,20 @@
+package com.warehouse.service.impl;
+
+import com.warehouse.mapper.DepartmentMapper;
+import com.warehouse.pojo.Department;
+import com.warehouse.service.DepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class DepartmentServiceImpl implements DepartmentService {
+
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    @Override
+    public List<Department> getAllInfo(String username) {
+
+        return departmentMapper.getAllInfo(username);
+    }
+}

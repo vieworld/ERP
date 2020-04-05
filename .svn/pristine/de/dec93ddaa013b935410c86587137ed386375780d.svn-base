@@ -1,0 +1,10 @@
+package com.warehouse.service;
+
+import com.warehouse.pojo.Users;
+
+import java.util.List;
+
+public interface AddressService {
+
+    List<String> getAllAddress(Users users);
+}

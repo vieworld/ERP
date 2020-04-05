@@ -1,0 +1,20 @@
+package com.warehouse.common;
+
+import java.text.DecimalFormat;
+import java.text.Format;
+
+public class DocumentUtils {
+
+    private static Format format = null;
+
+   public static String fourSuffix(Integer num){
+       format = new DecimalFormat("0000");
+       return ((DecimalFormat) format).format(num);
+   }
+
+   public static String fiveSuffix(Integer num){
+      format = new DecimalFormat("00000");
+      return format.format(num);
+   }
+
+}

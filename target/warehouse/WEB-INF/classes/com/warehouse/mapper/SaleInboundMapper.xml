@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.SaleInboundMapper">
+    <insert id="addSaleInboundInfo" parameterType="com.warehouse.pojo.SaleInbound">
+        insert into saleInbound(sai_id, sai_cusId, sai_contacts, sai_phone, inb_id)values(
+        #{saiId}, #{saiCusId}, #{saiContacts}, #{saiPhone}, #{inbId}
+        )
+    </insert>
+</mapper>

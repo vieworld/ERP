@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/warehouse"
+                userId="root"
+                password="123456"
+        >
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.warehouse.pojo" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--<sqlMapGenerator targetPackage="com.mark.mapper"  targetProject="./src/main/java">-->
+        <!--<property name="enableSubPackages" value="true" />-->
+        <!--</sqlMapGenerator>-->
+
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.mark.mapper"  targetProject="./src/main/java">-->
+        <!--<property name="enableSubPackages" value="true" />-->
+        <!--</javaClientGenerator>-->
+
+        <table tableName="users" domainObjectName="Users"></table>
+        <table tableName="product" domainObjectName="Product"></table>
+        <table tableName="picture" domainObjectName="Picture"></table>
+        <table tableName="enclosure" domainObjectName="Enclosure"></table>
+        <table tableName="customerLevel" domainObjectName="CustomerLevel"></table>
+        <table tableName="customerlevel" domainObjectName="Customerlevel"></table>
+        <table tableName="category" domainObjectName="Category"></table>
+        <table tableName="unit" domainObjectName="Unit"></table>
+        <table tableName="custom" domainObjectName="Custom"></table>
+        <table tableName="purchase" domainObjectName="Purchase"></table>
+        <table tableName="supplier" domainObjectName="Supplier"></table>
+        <table tableName="purdetails" domainObjectName="Purdetails"></table>
+        <table tableName="address" domainObjectName="Address"></table>
+        <table tableName="project" domainObjectName="Project"></table>
+        <table tableName="method" domainObjectName="Method"></table>
+        <table tableName="taxRate" domainObjectName="TaxRate"></table>
+        <table tableName="saleOrder" domainObjectName="SaleOrder"></table>
+        <table tableName="customer" domainObjectName="Customer"></table>
+        <table tableName="customerState" domainObjectName="CustomerState"></table>
+        <table tableName="inbound" domainObjectName="Inbound"></table>
+        <table tableName="produce" domainObjectName="Produce"></table>
+        <table tableName="purInbound" domainObjectName="PurInbound"></table>
+        <table tableName="saleInbound" domainObjectName="SaleInbound"></table>
+        <table tableName="otherInbound" domainObjectName="OtherInbound"></table>
+        <table tableName="warehouse" domainObjectName="Warehouse"></table>
+        <table tableName="department" domainObjectName="Department"></table>
+        <table tableName="employee" domainObjectName="Employee"></table>
+        <table tableName="outbound" domainObjectName="Outbound"></table>
+        <table tableName="experess" domainObjectName="Experess"></table>
+        <table tableName="saleOutbound" domainObjectName="SaleOutbound"></table>
+        <table tableName="stocktaking" domainObjectName="Stocktaking"></table>
+        <table tableName="stocktakingInfo" domainObjectName="StocktakingInfo"></table>
+        <table tableName="scheduling" domainObjectName="Scheduling"></table>
+        <table tableName="schedulInfo" domainObjectName="SchedulInfo"></table>
+        <table tableName="income" domainObjectName="Income"></table>
+        <table tableName="incomeType" domainObjectName="IncomeType"></table>
+        <table tableName="account" domainObjectName="Account"></table>
+        <table tableName="incomeInfo" domainObjectName="IncomeInfo"></table>
+        <table tableName="expend" domainObjectName="Expend"></table>
+        <table tableName="expendType" domainObjectName="ExpendType"></table>
+
+        <table tableName="saleInvoice" domainObjectName="SaleInvoice"></table>
+        <table tableName="invoiceType" domainObjectName="InvoiceType"></table>
+        <table tableName="invoice" domainObjectName="Invoice"></table>
+
+    </context>
+</generatorConfiguration>

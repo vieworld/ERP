@@ -1,0 +1,40 @@
+package com.warehouse.controller;
+
+import com.warehouse.common.JsonData;
+import com.warehouse.pojo.Project;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@Controller
+@RequestMapping("/project")
+public class ProjectController {
+
+    @Autowired
+    private ProjectService projectService;
+
+    @RequestMapping(value = "/getAllProjectInfo",method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData getAllProjectInfo(HttpServletRequest request){
+        Users users = (Users) request.getSession().getAttribute("users");
+//        users.setUsername("123");
+        List<String> allProjectInfo = null;
+        try {
+
+         allProjectInfo = projectService.getAllProjectInfo(users);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return JsonData.faile("查询失败");
+        }
+
+        return JsonData.success("查询成功",allProjectInfo);
+    }
+}

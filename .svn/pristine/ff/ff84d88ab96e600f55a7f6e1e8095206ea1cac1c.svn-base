@@ -1,0 +1,10 @@
+﻿package com.warehouse.service;
+
+import com.warehouse.pojo.Purchase;
+import org.springframework.web.multipart.MultipartFile;
+
+public interface PurchaseService {
+
+    //添加采购单
+    Purchase addPurchase(Purchase purchase, MultipartFile[] fileName);
+}

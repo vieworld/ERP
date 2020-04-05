@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class TaxRate {
+    private String trId;
+
+    private Integer trName;
+
+    private String giId;
+
+    public String getTrId() {
+        return trId;
+    }
+
+    public void setTrId(String trId) {
+        this.trId = trId == null ? null : trId.trim();
+    }
+
+    public Integer getTrName() {
+        return trName;
+    }
+
+    public void setTrName(Integer trName) {
+        this.trName = trName;
+    }
+
+    public String getGiId() {
+        return giId;
+    }
+
+    public void setGiId(String giId) {
+        this.giId = giId == null ? null : giId.trim();
+    }
+}

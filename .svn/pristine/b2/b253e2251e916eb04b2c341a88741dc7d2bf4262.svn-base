@@ -1,0 +1,53 @@
+package com.warehouse.pojo;
+
+public class Production {
+    private String pId;
+
+    private String pDepart;
+
+    private String username;
+
+    private String waId;
+
+    private String reId;
+
+    public String getpId() {
+        return pId;
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId == null ? null : pId.trim();
+    }
+
+    public String getpDepart() {
+        return pDepart;
+    }
+
+    public void setpDepart(String pDepart) {
+        this.pDepart = pDepart == null ? null : pDepart.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getWaId() {
+        return waId;
+    }
+
+    public void setWaId(String waId) {
+        this.waId = waId == null ? null : waId.trim();
+    }
+
+    public String getReId() {
+        return reId;
+    }
+
+    public void setReId(String reId) {
+        this.reId = reId == null ? null : reId.trim();
+    }
+}

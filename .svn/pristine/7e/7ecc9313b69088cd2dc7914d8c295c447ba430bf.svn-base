@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class CustomerLevel{
+    private String lId;
+
+    private String lName;
+
+    private Integer lDiscount;
+
+    public String getlId() {
+        return lId;
+    }
+
+    public void setlId(String lId) {
+        this.lId = lId == null ? null : lId.trim();
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public void setlName(String lName) {
+        this.lName = lName == null ? null : lName.trim();
+    }
+
+    public Integer getlDiscount() {
+        return lDiscount;
+    }
+
+    public void setlDiscount(Integer lDiscount) {
+        this.lDiscount = lDiscount;
+    }
+}

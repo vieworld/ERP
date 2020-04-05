@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.AddressMapper">
+    
+    <select id="getAllAddress" parameterType="java.lang.String" resultType="com.warehouse.pojo.Address">
+        select ad_id, ad_location, ad_detailed,ad_state from address
+        <where>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addAddressInfo" parameterType="com.warehouse.pojo.Address">
+        insert into address(ad_id, ad_location, ad_detailed,ad_state, username, c_id)values(
+            #{adId}, #{adLocation}, #{adDetailed}, #{adState}, #{username}, #{cId}
+        )
+    </insert>
+
+    <update id="updateAddressInfo" parameterType="com.warehouse.pojo.Address">
+        update address
+        <set>
+            <if test="adLocation != null and adLocation != ''">
+                ad_location = #{adLocation}
+            </if>
+            <if test="adDetailed != null and adDetailed != ''">
+                ,ad_detailed = #{adDetailed}
+            </if>
+            <if test="adState != null and adState != ''">
+                ,ad_state = #{adState}
+            </if>
+            <if test="adState == null and adState == ''">
+                ,ad_state = 0
+            </if>
+        </set>
+        <where>
+            ad_id = #{adId}
+        </where>
+    </update>
+
+    <delete id="deleteAddressInfo" parameterType="java.lang.String">
+        delete from address
+        where ad_id = #{id}
+    </delete>
+</mapper>

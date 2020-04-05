@@ -1,0 +1,53 @@
+package com.warehouse.pojo;
+
+public class Binding {
+    private String buId;
+
+    private Float buSummoney;
+
+    private Float buMoney;
+
+    private String buRemaks;
+
+    private String inId;
+
+    public String getBuId() {
+        return buId;
+    }
+
+    public void setBuId(String buId) {
+        this.buId = buId == null ? null : buId.trim();
+    }
+
+    public Float getBuSummoney() {
+        return buSummoney;
+    }
+
+    public void setBuSummoney(Float buSummoney) {
+        this.buSummoney = buSummoney;
+    }
+
+    public Float getBuMoney() {
+        return buMoney;
+    }
+
+    public void setBuMoney(Float buMoney) {
+        this.buMoney = buMoney;
+    }
+
+    public String getBuRemaks() {
+        return buRemaks;
+    }
+
+    public void setBuRemaks(String buRemaks) {
+        this.buRemaks = buRemaks == null ? null : buRemaks.trim();
+    }
+
+    public String getInId() {
+        return inId;
+    }
+
+    public void setInId(String inId) {
+        this.inId = inId == null ? null : inId.trim();
+    }
+}

@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Department;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface DepartmentMapper {
+
+    List<Department> getAllInfo(@Param(value = "username") String username);
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.UnitMapper">
+
+    <select id="getAllUnitInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.Unit">
+        select u_id, u_name from unit
+        <where>
+            username = #{username}
+            or username is null
+        </where>
+    </select>
+
+    <insert id="addUnitInfo" parameterType="com.warehouse.pojo.Unit">
+        insert into unit(u_id, u_name, username)values(
+        #{uId},#{uName},#{username}
+        )
+    </insert>
+
+    <delete id="deleteUnitInfo" parameterType="java.lang.String">
+        delete from unit
+        where u_id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.TaxRate;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface TaxRateMapper {
+
+    List<String> getAllTaxRateInfo(@Param(value = "username") String username);
+}

@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Project;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface ProjectMapper {
+
+    List<String> getAllProjectInfo(@Param(value = "username") String username);
+}

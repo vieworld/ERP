@@ -1,0 +1,65 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Expend {
+    private String exId;
+
+    private Date exTime;
+
+    private String exName;
+
+    private String exRemaks;
+
+    private Float exSum;
+
+    private String tId;
+
+    public String getExId() {
+        return exId;
+    }
+
+    public void setExId(String exId) {
+        this.exId = exId == null ? null : exId.trim();
+    }
+
+    public Date getExTime() {
+        return exTime;
+    }
+
+    public void setExTime(Date exTime) {
+        this.exTime = exTime;
+    }
+
+    public String getExName() {
+        return exName;
+    }
+
+    public void setExName(String exName) {
+        this.exName = exName == null ? null : exName.trim();
+    }
+
+    public String getExRemaks() {
+        return exRemaks;
+    }
+
+    public void setExRemaks(String exRemaks) {
+        this.exRemaks = exRemaks == null ? null : exRemaks.trim();
+    }
+
+    public Float getExSum() {
+        return exSum;
+    }
+
+    public void setExSum(Float exSum) {
+        this.exSum = exSum;
+    }
+
+    public String gettId() {
+        return tId;
+    }
+
+    public void settId(String tId) {
+        this.tId = tId == null ? null : tId.trim();
+    }
+}

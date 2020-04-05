@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.DocumentNumberMapper">
+
+    <sql id="documentNumber" >
+        select docn_id, docn_prefix, docn_dateType from documentNumber
+    </sql>
+    
+
+    
+    <select id="getDocumentNumber" parameterType="java.lang.String" resultType="com.warehouse.pojo.DocumentNumber">
+        <include refid="documentNumber" />
+        where docn_id = #{id}
+    </select>
+</mapper>

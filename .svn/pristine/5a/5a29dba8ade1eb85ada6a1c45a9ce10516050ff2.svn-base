@@ -1,0 +1,28 @@
+package com.warehouse.Vo;
+
+
+import java.util.List;
+
+public class ChartVo<T> {
+    private List<T> SaleChart;
+    private Float totalAmount;
+    private int countAmount;
+
+
+
+    public Float getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Float totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public int getCountAmount() {
+        return countAmount;
+    }
+
+    public void setCountAmount(int countAmount) {
+        this.countAmount = countAmount;
+    }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.EmployeeMapper">
+
+    <resultMap id="allEmployee" type="com.warehouse.pojo.Employee">
+        <id property="emId" column="em_id" />
+        <result property="emName" column="em_name"/>
+        <result property="emPhone" column="em_phone"/>
+        <association property="department" javaType="com.warehouse.pojo.Department">
+            <result property="deName" column="de_name"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllEmployeeInfo" parameterType="java.lang.String" resultMap="allEmployee">
+        select em_id, em_name, em_phone, de_name from employee as a left join department as b
+        on a.de_id = b.de_id where username = #{username}
+    </select>
+
+    <insert id="addEmployeeInfo" parameterType="com.warehouse.pojo.Employee">
+        insert into employee(em_id, em_name, em_phone, de_id)values(
+            #{emId}, #{emName}, #{emPhone}, #{deId}
+        )
+    </insert>
+
+    <update id="updateEmployeeInfo" parameterType="com.warehouse.pojo.Employee">
+        update employee
+        <set>
+            <if test="emName != null and emName != ''">
+                em_name = #{emName}
+            </if>
+            <if test="emPhone != null and emPhone != ''">
+                ,em_phone = #{emPhone}
+            </if>
+            <if test="deId != null and deId != ''">
+                ,de_id = ${deId}
+            </if>
+        </set>
+        where em_id =  #{emId}
+    </update>
+
+    <delete id="deleteEmployeeInfo" parameterType="java.lang.String">
+        delete from employee
+        where em_id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,95 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Warehousing {
+    private String waId;
+
+    private String docnum;
+
+    private String remaks;
+
+    private String sName;
+
+    private Date warehousingtime;
+
+    private Integer waType;
+
+    private String ebId;
+
+    private String gId;
+
+    private String tbId;
+
+    public String getWaId() {
+        return waId;
+    }
+
+    public void setWaId(String waId) {
+        this.waId = waId == null ? null : waId.trim();
+    }
+
+    public String getDocnum() {
+        return docnum;
+    }
+
+    public void setDocnum(String docnum) {
+        this.docnum = docnum == null ? null : docnum.trim();
+    }
+
+    public String getRemaks() {
+        return remaks;
+    }
+
+    public void setRemaks(String remaks) {
+        this.remaks = remaks == null ? null : remaks.trim();
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName == null ? null : sName.trim();
+    }
+
+    public Date getWarehousingtime() {
+        return warehousingtime;
+    }
+
+    public void setWarehousingtime(Date warehousingtime) {
+        this.warehousingtime = warehousingtime;
+    }
+
+    public Integer getWaType() {
+        return waType;
+    }
+
+    public void setWaType(Integer waType) {
+        this.waType = waType;
+    }
+
+    public String getEbId() {
+        return ebId;
+    }
+
+    public void setEbId(String ebId) {
+        this.ebId = ebId == null ? null : ebId.trim();
+    }
+
+    public String getgId() {
+        return gId;
+    }
+
+    public void setgId(String gId) {
+        this.gId = gId == null ? null : gId.trim();
+    }
+
+    public String getTbId() {
+        return tbId;
+    }
+
+    public void setTbId(String tbId) {
+        this.tbId = tbId == null ? null : tbId.trim();
+    }
+}

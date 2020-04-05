@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ProductMapper">
+
+    <sql id="productCotent">
+        select pro_id, pro_name,pro_spe, pro_uppler,pro_lower, pro_sale,pro_purchase, pro_code, pro_brand, pro_model,
+        pro_describe,pro_unit,pro_category, pro_state,pro_number from product
+    </sql>
+
+    <select id="getProductCount" resultType="java.lang.Integer">
+        select count(*) from Product
+        where pro_id like '${id}%' and username = #{username}
+    </select>
+
+    <select id="getPartProduct" parameterType="com.warehouse.Vo.ProductVo" resultType="com.warehouse.pojo.Product">
+        <include refid="productCotent"></include>
+        <where>
+            <if test="state != null and state != ''">
+                pro_state = #{state};
+            </if>
+            <if test="category != null and category != ''">
+                and (pro_category = #{category})
+            </if>
+            <if test="name != null and name != ''">
+                and (pro_id like '%${name}%' or pro_name like '%${name}%' or pro_code like '%${name}%')
+            </if>
+            <if test="username != null and username != ''">
+              and  username = #{username}
+            </if>
+        </where>
+    </select>
+    
+    <select id="getNormalProduct" parameterType="com.warehouse.Vo.ProductVo" resultType="com.warehouse.pojo.Product">
+        <include refid="productCotent"></include>
+        <where>
+            <if test="state != null and state != ''">
+                pro_state = #{state};
+            </if>
+            <if test="category != null and category != ''">
+                and (pro_category = #{category})
+            </if>
+            <if test="name != null and name != ''">
+                and (pro_id like '%${name}%' or pro_name like '%${name}%' or pro_code like '%${name}%')
+            </if>
+            <if test="stockState != null and stockState !=''">
+                and (pro_number between pro_uppler and pro_lower)
+            </if>
+            <if test="username != null and username != ''">
+               and username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getNegativeProduct" parameterType="com.warehouse.Vo.ProductVo" resultType="com.warehouse.pojo.Product">
+        <include refid="productCotent"></include>
+        <where>
+            <if test="state != null and state != ''">
+                pro_state = #{state};
+            </if>
+            <if test="category != null and category != ''">
+                and (pro_category = #{category})
+            </if>
+            <if test="name != null and name != ''">
+                and (pro_id like '%${name}%' or pro_name like '%${name}%' or pro_code like '%${name}%')
+            </if>
+            <if test="stockState != null and stockState !=''">
+                and pro_number &lt; 0
+            </if>
+            <if test="username != null and username != ''">
+               and username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getUpperProduct" parameterType="com.warehouse.Vo.ProductVo" resultType="com.warehouse.pojo.Product">
+        <include refid="productCotent"></include>
+        <where>
+            <if test="state != null and state != ''">
+                pro_state = #{state};
+            </if>
+            <if test="category != null and category != ''">
+                and (pro_category = #{category})
+            </if>
+            <if test="name != null and name != ''">
+                and (pro_id like '%${name}%' or pro_name like '%${name}%' or pro_code like '%${name}%')
+            </if>
+            <if test="stockState != null and stockState !=''">
+                and (pro_number &gt; pro_uppler)
+            </if>
+            <if test="username != null and username != ''">
+               and username = #{username}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getLowerProduct" parameterType="com.warehouse.Vo.ProductVo" resultType="com.warehouse.pojo.Product">
+        <include refid="productCotent"></include>
+        <where>
+            <if test="state != null and state != ''">
+                pro_state = #{state};
+            </if>
+            <if test="category != null and category != ''">
+                and (pro_category = #{category})
+            </if>
+            <if test="name != null and name != ''">
+                and (pro_id like '%${name}%' or pro_name like '%${name}%' or pro_code like '%${name}%')
+            </if>
+            <if test="stockState != null and stockState !=''">
+                and (pro_number &lt; pro_lower)
+            </if>
+            <if test="username != null and username != ''">
+               and username = #{username}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getCountProduct" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from product
+        where pro_id = #{id}
+    </select>
+
+    <update id="updateProductInfo" parameterType="com.warehouse.pojo.Purdetails">
+        update product
+        set pro_number = (pro_number + #{pudNum})
+        where pro_id = #{pudGoodsId}
+    </update>
+
+
+    <insert id="addProductInfo" >
+        insert into product(pro_id, pro_name,pro_code, pro_brand, pro_model,
+        pro_unit,pro_category, pro_state,pro_number, ware_id)values(
+        #{purdetails.pudGoodsId}, #{purdetails.pudProName},#{purdetails.pudCode}, #{purdetails.pudBrand},
+        #{purdetails.pudMode},#{purdetails.pudUnit},#{purdetails.pudCategory},0, #{purdetails.pudNum}, #{wareId}
+        )
+    </insert>
+
+    <select id="getCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from product
+        where username = #{username}
+    </select>
+
+
+</mapper>

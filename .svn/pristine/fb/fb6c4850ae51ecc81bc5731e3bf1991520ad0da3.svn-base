@@ -1,0 +1,43 @@
+package com.warehouse.pojo;
+
+public class Customerlevel {
+    private String clId;
+
+    private Integer clLevel;
+
+    private Integer clDiscount;
+
+    private String cId;
+
+    public String getClId() {
+        return clId;
+    }
+
+    public void setClId(String clId) {
+        this.clId = clId == null ? null : clId.trim();
+    }
+
+    public Integer getClLevel() {
+        return clLevel;
+    }
+
+    public void setClLevel(Integer clLevel) {
+        this.clLevel = clLevel;
+    }
+
+    public Integer getClDiscount() {
+        return clDiscount;
+    }
+
+    public void setClDiscount(Integer clDiscount) {
+        this.clDiscount = clDiscount;
+    }
+
+    public String getcId() {
+        return cId;
+    }
+
+    public void setcId(String cId) {
+        this.cId = cId == null ? null : cId.trim();
+    }
+}

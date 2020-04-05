@@ -1,0 +1,43 @@
+package com.warehouse.pojo;
+
+public class InvoiceBuiding {
+    private String ibId;
+
+    private Float ibSumoney;
+
+    private Float ibMoney;
+
+    private String invId;
+
+    public String getIbId() {
+        return ibId;
+    }
+
+    public void setIbId(String ibId) {
+        this.ibId = ibId == null ? null : ibId.trim();
+    }
+
+    public Float getIbSumoney() {
+        return ibSumoney;
+    }
+
+    public void setIbSumoney(Float ibSumoney) {
+        this.ibSumoney = ibSumoney;
+    }
+
+    public Float getIbMoney() {
+        return ibMoney;
+    }
+
+    public void setIbMoney(Float ibMoney) {
+        this.ibMoney = ibMoney;
+    }
+
+    public String getInvId() {
+        return invId;
+    }
+
+    public void setInvId(String invId) {
+        this.invId = invId == null ? null : invId.trim();
+    }
+}

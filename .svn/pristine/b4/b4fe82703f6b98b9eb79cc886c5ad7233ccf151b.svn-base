@@ -1,0 +1,75 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Invoice {
+    private String invId;
+
+    private Date invTime;
+
+    private String invName;
+
+    private String invNum;
+
+    private Float invSumoney;
+
+    private String invRemaks;
+
+    private String itId;
+
+    public String getInvId() {
+        return invId;
+    }
+
+    public void setInvId(String invId) {
+        this.invId = invId == null ? null : invId.trim();
+    }
+
+    public Date getInvTime() {
+        return invTime;
+    }
+
+    public void setInvTime(Date invTime) {
+        this.invTime = invTime;
+    }
+
+    public String getInvName() {
+        return invName;
+    }
+
+    public void setInvName(String invName) {
+        this.invName = invName == null ? null : invName.trim();
+    }
+
+    public String getInvNum() {
+        return invNum;
+    }
+
+    public void setInvNum(String invNum) {
+        this.invNum = invNum == null ? null : invNum.trim();
+    }
+
+    public Float getInvSumoney() {
+        return invSumoney;
+    }
+
+    public void setInvSumoney(Float invSumoney) {
+        this.invSumoney = invSumoney;
+    }
+
+    public String getInvRemaks() {
+        return invRemaks;
+    }
+
+    public void setInvRemaks(String invRemaks) {
+        this.invRemaks = invRemaks == null ? null : invRemaks.trim();
+    }
+
+    public String getItId() {
+        return itId;
+    }
+
+    public void setItId(String itId) {
+        this.itId = itId == null ? null : itId.trim();
+    }
+}

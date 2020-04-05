@@ -1,0 +1,14 @@
+package com.warehouse.common;
+
+import org.apache.logging.log4j.core.util.UuidUtil;
+
+import java.util.UUID;
+
+public class UUIDUtils {
+
+    public static String getUUID(){
+
+        return UUID.randomUUID().toString().replace("-","").toUpperCase();
+    }
+
+}

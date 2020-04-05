@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Purdetails;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface PurdetailsMapper {
+
+    void addPurdetailsList(@Param(value = "list") List<Purdetails> list);
+}

@@ -1,0 +1,55 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Inventory {
+    private String iId;
+
+    private Date iTime;
+
+    private String iDocnum;
+
+    private String iName;
+
+    private String iRemaks;
+
+    public String getiId() {
+        return iId;
+    }
+
+    public void setiId(String iId) {
+        this.iId = iId == null ? null : iId.trim();
+    }
+
+    public Date getiTime() {
+        return iTime;
+    }
+
+    public void setiTime(Date iTime) {
+        this.iTime = iTime;
+    }
+
+    public String getiDocnum() {
+        return iDocnum;
+    }
+
+    public void setiDocnum(String iDocnum) {
+        this.iDocnum = iDocnum == null ? null : iDocnum.trim();
+    }
+
+    public String getiName() {
+        return iName;
+    }
+
+    public void setiName(String iName) {
+        this.iName = iName == null ? null : iName.trim();
+    }
+
+    public String getiRemaks() {
+        return iRemaks;
+    }
+
+    public void setiRemaks(String iRemaks) {
+        this.iRemaks = iRemaks == null ? null : iRemaks.trim();
+    }
+}

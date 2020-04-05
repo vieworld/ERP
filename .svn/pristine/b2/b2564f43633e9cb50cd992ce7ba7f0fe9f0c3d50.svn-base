@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ExpressMapper">
+    
+    <select id="getAllExpressInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.Express">
+        select exp_id, exp_name from express
+        <where>
+            username is null
+            <if test="username != null and username != ''">
+                or username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addExpressInfo" parameterType="com.warehouse.pojo.Express">
+        insert into express(exp_id, exp_name, username)values(
+            #{expId}, #{expName}, #{username}
+        );
+    </insert>
+
+    <update id="updateExpressInfo" parameterType="com.warehouse.pojo.Express">
+        update express
+        set exp_name = #{expName}
+        where exp_id = #{expId}
+    </update>
+
+    <delete id="deleteExpressInfo" parameterType="java.lang.String">
+        delete from express
+        where exp_id = #{id}
+    </delete>
+</mapper>

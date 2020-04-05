@@ -1,0 +1,24 @@
+package com.warehouse.Vo;
+
+public class CustomVo {
+
+    private String cusName;
+
+    private String cusContent;
+
+    public String getCusName() {
+        return cusName;
+    }
+
+    public void setCusName(String cusName) {
+        this.cusName = cusName;
+    }
+
+    public String getCusContent() {
+        return cusContent;
+    }
+
+    public void setCusContent(String cusContent) {
+        this.cusContent = cusContent;
+    }
+}

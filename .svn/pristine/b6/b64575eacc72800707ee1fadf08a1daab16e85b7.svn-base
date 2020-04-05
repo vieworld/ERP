@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class Department {
+    private String deId;
+
+    private String deName;
+
+    public String getDeId() {
+        return deId;
+    }
+
+    public void setDeId(String deId) {
+        this.deId = deId == null ? null : deId.trim();
+    }
+
+    public String getDeName() {
+        return deName;
+    }
+
+    public void setDeName(String deName) {
+        this.deName = deName == null ? null : deName.trim();
+    }
+}

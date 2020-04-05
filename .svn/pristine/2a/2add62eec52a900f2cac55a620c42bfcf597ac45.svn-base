@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.TaxRateMapper">
+
+    <select id="getAllTaxRateInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.TaxRate">
+        select tr_id, tr_discount, tr_type from taxRate
+        <where>
+            username is null
+            <if test="username != null and username != ''">
+                or username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addTaxTateInfo" parameterType="com.warehouse.pojo.TaxRate">
+        insert into taxRate(tr_id, tr_discount, tr_type, username) values(
+            #{trId}, #{trDiscount}, #{trType}, #{username}
+        )
+    </insert>
+    
+    <update id="updateTaxRateInfo" parameterType="com.warehouse.pojo.TaxRate">
+        update taxRate
+        <set>
+            <if test="trDiscount != null and trDiscount != ''">
+                tr_discount = #{trDiscount}
+            </if>
+            <if test="trType != null and trType != ''">
+                ,tr_type = #{trType}
+            </if>
+        </set>
+        <where>
+            tr_id = #{trId}
+        </where>
+    </update>
+
+    <delete id="deleteTaxRateInfo" parameterType="java.lang.String">
+        delete from taxRate
+        where tr_id = #{id}
+    </delete>
+</mapper>

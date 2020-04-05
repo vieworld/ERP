@@ -1,0 +1,133 @@
+package com.warehouse.pojo;
+
+public class Supplier {
+    private String spId;
+
+    private String sCompany;
+
+    private String sContacts;
+
+    private String sPhone;
+
+    private String sMail;
+
+    private String sUsername;
+
+    private String sLegalperson;
+
+    private String sAdress;
+
+    private String sCode;
+
+    private String sRemaks;
+
+    private Integer sState;
+
+    private String waId;
+
+    private String reId;
+
+    public String getSpId() {
+        return spId;
+    }
+
+    public void setSpId(String spId) {
+        this.spId = spId == null ? null : spId.trim();
+    }
+
+    public String getsCompany() {
+        return sCompany;
+    }
+
+    public void setsCompany(String sCompany) {
+        this.sCompany = sCompany == null ? null : sCompany.trim();
+    }
+
+    public String getsContacts() {
+        return sContacts;
+    }
+
+    public void setsContacts(String sContacts) {
+        this.sContacts = sContacts == null ? null : sContacts.trim();
+    }
+
+    public String getsPhone() {
+        return sPhone;
+    }
+
+    public void setsPhone(String sPhone) {
+        this.sPhone = sPhone == null ? null : sPhone.trim();
+    }
+
+    public String getsMail() {
+        return sMail;
+    }
+
+    public void setsMail(String sMail) {
+        this.sMail = sMail == null ? null : sMail.trim();
+    }
+
+    public String getsUsername() {
+        return sUsername;
+    }
+
+    public void setsUsername(String sUsername) {
+        this.sUsername = sUsername == null ? null : sUsername.trim();
+    }
+
+    public String getsLegalperson() {
+        return sLegalperson;
+    }
+
+    public void setsLegalperson(String sLegalperson) {
+        this.sLegalperson = sLegalperson == null ? null : sLegalperson.trim();
+    }
+
+    public String getsAdress() {
+        return sAdress;
+    }
+
+    public void setsAdress(String sAdress) {
+        this.sAdress = sAdress == null ? null : sAdress.trim();
+    }
+
+    public String getsCode() {
+        return sCode;
+    }
+
+    public void setsCode(String sCode) {
+        this.sCode = sCode == null ? null : sCode.trim();
+    }
+
+    public String getsRemaks() {
+        return sRemaks;
+    }
+
+    public void setsRemaks(String sRemaks) {
+        this.sRemaks = sRemaks == null ? null : sRemaks.trim();
+    }
+
+    public Integer getsState() {
+        return sState;
+    }
+
+    public void setsState(Integer sState) {
+        this.sState = sState;
+    }
+
+    public String getWaId() {
+        return waId;
+    }
+
+    public void setWaId(String waId) {
+        this.waId = waId == null ? null : waId.trim();
+    }
+
+    public String getReId() {
+        return reId;
+    }
+
+    public void setReId(String reId) {
+        this.reId = reId == null ? null : reId.trim();
+    }
+}

@@ -1,0 +1,47 @@
+package com.warehouse.MSG;
+
+import com.github.pagehelper.PageInfo;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.warehouse.Vo.ProductVo;
+import com.warehouse.Vo.PurchaseDetailsVo;
+import com.warehouse.Vo.PurchaseVo;
+import com.warehouse.mapper.AddressMapper;
+import com.warehouse.mapper.PurchaseMapper;
+import com.warehouse.mapper.UserMapper;
+import com.warehouse.pojo.*;
+import com.warehouse.service.*;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:applicationContext.xml")
+public class test {
+
+    @Autowired
+    private ProjectService projectService;
+
+    @Test
+    public void test1() throws IOException {
+
+        Project project =  new Project();
+        project.setPrId("1");
+        project.setPrName("办公所需");
+        project.setUsername("123");
+//        projectService.updateProject(project);
+
+//        projectService.deleteProject("1");
+
+        projectService.addProject(project);
+
+
+
+    }
+}

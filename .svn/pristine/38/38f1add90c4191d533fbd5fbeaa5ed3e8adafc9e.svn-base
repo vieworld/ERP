@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class Method {
+    private String metId;
+
+    private String metMode;
+
+    public String getMetId() {
+        return metId;
+    }
+
+    public void setMetId(String metId) {
+        this.metId = metId == null ? null : metId.trim();
+    }
+
+    public String getMetMode() {
+        return metMode;
+    }
+
+    public void setMetMode(String metMode) {
+        this.metMode = metMode == null ? null : metMode.trim();
+    }
+}

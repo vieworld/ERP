@@ -1,0 +1,195 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class SaleOrder {
+    private String soId;
+
+    private Date soTime;
+
+    private String soCode;
+
+    private String soAddress;
+
+    private String soProject;
+
+    private String soMethod;
+
+    private String soOrder;
+
+    private String soName;
+
+    private String soContacts;
+
+    private String soPhone;
+
+    private String soMaks;
+
+    private Integer soState;
+
+    private Date soMakedate;
+
+    private String soModifier;
+
+    private Date soModifierdate;
+
+    private Integer soNum;
+
+    private Float soSum;
+
+    private String username;
+
+    private String cId;
+
+    public String getSoId() {
+        return soId;
+    }
+
+    public void setSoId(String soId) {
+        this.soId = soId == null ? null : soId.trim();
+    }
+
+    public Date getSoTime() {
+        return soTime;
+    }
+
+    public void setSoTime(Date soTime) {
+        this.soTime = soTime;
+    }
+
+    public String getSoCode() {
+        return soCode;
+    }
+
+    public void setSoCode(String soCode) {
+        this.soCode = soCode == null ? null : soCode.trim();
+    }
+
+    public String getSoAddress() {
+        return soAddress;
+    }
+
+    public void setSoAddress(String soAddress) {
+        this.soAddress = soAddress == null ? null : soAddress.trim();
+    }
+
+    public String getSoProject() {
+        return soProject;
+    }
+
+    public void setSoProject(String soProject) {
+        this.soProject = soProject == null ? null : soProject.trim();
+    }
+
+    public String getSoMethod() {
+        return soMethod;
+    }
+
+    public void setSoMethod(String soMethod) {
+        this.soMethod = soMethod == null ? null : soMethod.trim();
+    }
+
+    public String getSoOrder() {
+        return soOrder;
+    }
+
+    public void setSoOrder(String soOrder) {
+        this.soOrder = soOrder == null ? null : soOrder.trim();
+    }
+
+    public String getSoName() {
+        return soName;
+    }
+
+    public void setSoName(String soName) {
+        this.soName = soName == null ? null : soName.trim();
+    }
+
+    public String getSoContacts() {
+        return soContacts;
+    }
+
+    public void setSoContacts(String soContacts) {
+        this.soContacts = soContacts == null ? null : soContacts.trim();
+    }
+
+    public String getSoPhone() {
+        return soPhone;
+    }
+
+    public void setSoPhone(String soPhone) {
+        this.soPhone = soPhone == null ? null : soPhone.trim();
+    }
+
+    public String getSoMaks() {
+        return soMaks;
+    }
+
+    public void setSoMaks(String soMaks) {
+        this.soMaks = soMaks == null ? null : soMaks.trim();
+    }
+
+    public Integer getSoState() {
+        return soState;
+    }
+
+    public void setSoState(Integer soState) {
+        this.soState = soState;
+    }
+
+    public Date getSoMakedate() {
+        return soMakedate;
+    }
+
+    public void setSoMakedate(Date soMakedate) {
+        this.soMakedate = soMakedate;
+    }
+
+    public String getSoModifier() {
+        return soModifier;
+    }
+
+    public void setSoModifier(String soModifier) {
+        this.soModifier = soModifier == null ? null : soModifier.trim();
+    }
+
+    public Date getSoModifierdate() {
+        return soModifierdate;
+    }
+
+    public void setSoModifierdate(Date soModifierdate) {
+        this.soModifierdate = soModifierdate;
+    }
+
+    public Integer getSoNum() {
+        return soNum;
+    }
+
+    public void setSoNum(Integer soNum) {
+        this.soNum = soNum;
+    }
+
+    public Float getSoSum() {
+        return soSum;
+    }
+
+    public void setSoSum(Float soSum) {
+        this.soSum = soSum;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getcId() {
+        return cId;
+    }
+
+    public void setcId(String cId) {
+        this.cId = cId == null ? null : cId.trim();
+    }
+}

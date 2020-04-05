@@ -1,0 +1,47 @@
+package com.warehouse.MSG;
+
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.warehouse.mapper.AddressMapper;
+import com.warehouse.mapper.PurchaseMapper;
+import com.warehouse.mapper.UserMapper;
+import com.warehouse.pojo.Address;
+import com.warehouse.pojo.Method;
+import com.warehouse.pojo.Purchase;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.AddressService;
+import com.warehouse.service.MethodService;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:applicationContext.xml")
+public class test {
+
+    @Autowired
+    private MethodService methodService;
+    @Test
+    public void test1(){
+//        Users user = new Users();
+//        user.setUsername("123451");
+//        user.setPasswd("123451");
+//        String s = userMapper.addUser(user);
+//        System.out.println("==========>:"+s);
+
+//        Purchase purchase = new Purchase();
+//        purchase.setPurId("110112253");
+//        int s = purchaseMapper.addPurchase(purchase);
+//        System.out.println("================>"+
+        List<String> allMethodInfo = methodService.getAllMethodInfo(new Users());
+        System.out.println("=====================>");
+        for (String method : allMethodInfo) {
+            System.out.println(method.toString());
+        }
+        System.out.println("====================>");
+    }
+}

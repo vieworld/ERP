@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class Unit {
+    private String unId;
+
+    private String unName;
+
+    private String giId;
+
+    public String getUnId() {
+        return unId;
+    }
+
+    public void setUnId(String unId) {
+        this.unId = unId == null ? null : unId.trim();
+    }
+
+    public String getUnName() {
+        return unName;
+    }
+
+    public void setUnName(String unName) {
+        this.unName = unName == null ? null : unName.trim();
+    }
+
+    public String getGiId() {
+        return giId;
+    }
+
+    public void setGiId(String giId) {
+        this.giId = giId == null ? null : giId.trim();
+    }
+}

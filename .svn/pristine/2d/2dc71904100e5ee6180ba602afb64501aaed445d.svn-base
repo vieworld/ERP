@@ -1,0 +1,40 @@
+package com.warehouse.controller;
+
+import com.warehouse.common.JsonData;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.CustomService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 自定义表
+ */
+@Controller
+@RequestMapping("/custom")
+public class CustomController {
+
+    @Autowired
+    private CustomService customService;
+
+    @RequestMapping(value = "/getAllPurchaseCustomInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData getAllPurchaseCustomInfo(HttpServletRequest request){
+        Users user = (Users)request.getSession().getAttribute("users");
+
+        List<String> customVoList = null;
+        try {
+            customVoList = customService.getAllPurchaseCustomInfo(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return JsonData.faile("查询失败");
+        }
+
+        return JsonData.success("查询成功",customVoList);
+    }
+}

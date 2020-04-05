@@ -1,0 +1,65 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class TicketArrival {
+    private String taId;
+
+    private Date taTime;
+
+    private String taNum;
+
+    private Float taSumoney;
+
+    private String taRemaks;
+
+    private String itId;
+
+    public String getTaId() {
+        return taId;
+    }
+
+    public void setTaId(String taId) {
+        this.taId = taId == null ? null : taId.trim();
+    }
+
+    public Date getTaTime() {
+        return taTime;
+    }
+
+    public void setTaTime(Date taTime) {
+        this.taTime = taTime;
+    }
+
+    public String getTaNum() {
+        return taNum;
+    }
+
+    public void setTaNum(String taNum) {
+        this.taNum = taNum == null ? null : taNum.trim();
+    }
+
+    public Float getTaSumoney() {
+        return taSumoney;
+    }
+
+    public void setTaSumoney(Float taSumoney) {
+        this.taSumoney = taSumoney;
+    }
+
+    public String getTaRemaks() {
+        return taRemaks;
+    }
+
+    public void setTaRemaks(String taRemaks) {
+        this.taRemaks = taRemaks == null ? null : taRemaks.trim();
+    }
+
+    public String getItId() {
+        return itId;
+    }
+
+    public void setItId(String itId) {
+        this.itId = itId == null ? null : itId.trim();
+    }
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.MethodMapper">
+    <select id="getAllMethodInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.Method">
+        select met_id,  met_mode from method
+        <where>
+            username is null
+            <if test="username != null and username != ''">
+                or username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addMethodInfo" parameterType="com.warehouse.pojo.Method">
+        insert into method(met_id, met_mode, username)values(
+            #{metId}, #{metMode}, #{username}
+        )
+    </insert>
+
+    <update id="updateMethodInfo" parameterType="com.warehouse.pojo.Method">
+        update method
+        set met_mode = #{metMode}
+        where met_id = #{metId}
+    </update>
+
+    <delete id="deleteMethodInfo" parameterType="java.lang.String">
+        delete from method
+        where met_id = #{id}
+    </delete>
+</mapper>

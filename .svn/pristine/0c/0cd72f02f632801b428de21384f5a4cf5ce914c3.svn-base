@@ -1,0 +1,53 @@
+package com.warehouse.pojo;
+
+public class Exbinding {
+    private String ebId;
+
+    private Float ebSummoney;
+
+    private Float ebMoney;
+
+    private String ebRemaks;
+
+    private String exId;
+
+    public String getEbId() {
+        return ebId;
+    }
+
+    public void setEbId(String ebId) {
+        this.ebId = ebId == null ? null : ebId.trim();
+    }
+
+    public Float getEbSummoney() {
+        return ebSummoney;
+    }
+
+    public void setEbSummoney(Float ebSummoney) {
+        this.ebSummoney = ebSummoney;
+    }
+
+    public Float getEbMoney() {
+        return ebMoney;
+    }
+
+    public void setEbMoney(Float ebMoney) {
+        this.ebMoney = ebMoney;
+    }
+
+    public String getEbRemaks() {
+        return ebRemaks;
+    }
+
+    public void setEbRemaks(String ebRemaks) {
+        this.ebRemaks = ebRemaks == null ? null : ebRemaks.trim();
+    }
+
+    public String getExId() {
+        return exId;
+    }
+
+    public void setExId(String exId) {
+        this.exId = exId == null ? null : exId.trim();
+    }
+}

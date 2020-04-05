@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class State {
+    private String stId;
+
+    private String stName;
+
+    private String cId;
+
+    public String getStId() {
+        return stId;
+    }
+
+    public void setStId(String stId) {
+        this.stId = stId == null ? null : stId.trim();
+    }
+
+    public String getStName() {
+        return stName;
+    }
+
+    public void setStName(String stName) {
+        this.stName = stName == null ? null : stName.trim();
+    }
+
+    public String getcId() {
+        return cId;
+    }
+
+    public void setcId(String cId) {
+        this.cId = cId == null ? null : cId.trim();
+    }
+}

@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class Warehouse {
+    private String wId;
+
+    private String wName;
+
+    private String wAddress;
+
+    public String getwId() {
+        return wId;
+    }
+
+    public void setwId(String wId) {
+        this.wId = wId == null ? null : wId.trim();
+    }
+
+    public String getwName() {
+        return wName;
+    }
+
+    public void setwName(String wName) {
+        this.wName = wName == null ? null : wName.trim();
+    }
+
+    public String getwAddress() {
+        return wAddress;
+    }
+
+    public void setwAddress(String wAddress) {
+        this.wAddress = wAddress == null ? null : wAddress.trim();
+    }
+}

@@ -1,0 +1,75 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+
+public class Income {
+    private String inId;
+
+    private Date inTime;
+
+    private String inName;
+
+    private Float inSum;
+
+    private String inRemaks;
+
+    private String tId;
+
+    private String acId;
+
+    public String getInId() {
+        return inId;
+    }
+
+    public void setInId(String inId) {
+        this.inId = inId == null ? null : inId.trim();
+    }
+
+    public Date getInTime() {
+        return inTime;
+    }
+
+    public void setInTime(Date inTime) {
+        this.inTime = inTime;
+    }
+
+    public String getInName() {
+        return inName;
+    }
+
+    public void setInName(String inName) {
+        this.inName = inName == null ? null : inName.trim();
+    }
+
+    public Float getInSum() {
+        return inSum;
+    }
+
+    public void setInSum(Float inSum) {
+        this.inSum = inSum;
+    }
+
+    public String getInRemaks() {
+        return inRemaks;
+    }
+
+    public void setInRemaks(String inRemaks) {
+        this.inRemaks = inRemaks == null ? null : inRemaks.trim();
+    }
+
+    public String gettId() {
+        return tId;
+    }
+
+    public void settId(String tId) {
+        this.tId = tId == null ? null : tId.trim();
+    }
+
+    public String getAcId() {
+        return acId;
+    }
+
+    public void setAcId(String acId) {
+        this.acId = acId == null ? null : acId.trim();
+    }
+}

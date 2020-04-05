@@ -1,0 +1,194 @@
+package com.warehouse.pojo;
+
+public class Product {
+    private String proId;
+
+    private String proName;
+
+    private String proSpe;
+
+    private Integer proUppler;
+
+    private Integer proLower;
+
+    private Float proSale;
+
+    private Float proPurchase;
+
+    private String proCode;
+
+    private String proBrand;
+
+    private String proModel;
+
+    private String proDescribe;
+
+    private String proMaks;
+
+    private String proUnit;
+
+    private String proCategory;
+
+    private Integer proIssue;
+
+    private String lId;
+
+    private String username;
+
+    private int proState;
+
+    private int proNumber;
+
+    public String getProId() {
+        return proId;
+    }
+
+    public void setProId(String proId) {
+        this.proId = proId == null ? null : proId.trim();
+    }
+
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName == null ? null : proName.trim();
+    }
+
+    public String getProSpe() {
+        return proSpe;
+    }
+
+    public void setProSpe(String proSpe) {
+        this.proSpe = proSpe == null ? null : proSpe.trim();
+    }
+
+    public Integer getProUppler() {
+        return proUppler;
+    }
+
+    public void setProUppler(Integer proUppler) {
+        this.proUppler = proUppler;
+    }
+
+    public Integer getProLower() {
+        return proLower;
+    }
+
+    public void setProLower(Integer proLower) {
+        this.proLower = proLower;
+    }
+
+    public Float getProSale() {
+        return proSale;
+    }
+
+    public void setProSale(Float proSale) {
+        this.proSale = proSale;
+    }
+
+    public Float getProPurchase() {
+        return proPurchase;
+    }
+
+    public void setProPurchase(Float proPurchase) {
+        this.proPurchase = proPurchase;
+    }
+
+    public String getProCode() {
+        return proCode;
+    }
+
+    public void setProCode(String proCode) {
+        this.proCode = proCode == null ? null : proCode.trim();
+    }
+
+    public String getProBrand() {
+        return proBrand;
+    }
+
+    public void setProBrand(String proBrand) {
+        this.proBrand = proBrand == null ? null : proBrand.trim();
+    }
+
+    public String getProModel() {
+        return proModel;
+    }
+
+    public void setProModel(String proModel) {
+        this.proModel = proModel == null ? null : proModel.trim();
+    }
+
+    public String getProDescribe() {
+        return proDescribe;
+    }
+
+    public void setProDescribe(String proDescribe) {
+        this.proDescribe = proDescribe == null ? null : proDescribe.trim();
+    }
+
+    public String getProMaks() {
+        return proMaks;
+    }
+
+    public void setProMaks(String proMaks) {
+        this.proMaks = proMaks == null ? null : proMaks.trim();
+    }
+
+    public String getProUnit() {
+        return proUnit;
+    }
+
+    public void setProUnit(String proUnit) {
+        this.proUnit = proUnit == null ? null : proUnit.trim();
+    }
+
+    public String getProCategory() {
+        return proCategory;
+    }
+
+    public void setProCategory(String proCategory) {
+        this.proCategory = proCategory == null ? null : proCategory.trim();
+    }
+
+    public Integer getProIssue() {
+        return proIssue;
+    }
+
+    public void setProIssue(Integer proIssue) {
+        this.proIssue = proIssue;
+    }
+
+    public String getlId() {
+        return lId;
+    }
+
+    public void setlId(String lId) {
+        this.lId = lId == null ? null : lId.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public int getProState() {
+        return proState;
+    }
+
+    public void setProState(int proState) {
+        this.proState = proState;
+    }
+
+    public int getProNumber() {
+        return proNumber;
+    }
+
+    public void setProNumber(int proNumber) {
+        this.proNumber = proNumber;
+    }
+}
+

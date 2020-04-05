@@ -1,0 +1,43 @@
+package com.warehouse.pojo;
+
+public class Curemaks {
+    private String crId;
+
+    private String crName;
+
+    private String crContent;
+
+    private String cId;
+
+    public String getCrId() {
+        return crId;
+    }
+
+    public void setCrId(String crId) {
+        this.crId = crId == null ? null : crId.trim();
+    }
+
+    public String getCrName() {
+        return crName;
+    }
+
+    public void setCrName(String crName) {
+        this.crName = crName == null ? null : crName.trim();
+    }
+
+    public String getCrContent() {
+        return crContent;
+    }
+
+    public void setCrContent(String crContent) {
+        this.crContent = crContent == null ? null : crContent.trim();
+    }
+
+    public String getcId() {
+        return cId;
+    }
+
+    public void setcId(String cId) {
+        this.cId = cId == null ? null : cId.trim();
+    }
+}

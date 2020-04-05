@@ -1,0 +1,43 @@
+package com.warehouse.pojo;
+
+public class Tabuding {
+    private String tbId;
+
+    private Float tbSumoney;
+
+    private Float tbMoney;
+
+    private String taId;
+
+    public String getTbId() {
+        return tbId;
+    }
+
+    public void setTbId(String tbId) {
+        this.tbId = tbId == null ? null : tbId.trim();
+    }
+
+    public Float getTbSumoney() {
+        return tbSumoney;
+    }
+
+    public void setTbSumoney(Float tbSumoney) {
+        this.tbSumoney = tbSumoney;
+    }
+
+    public Float getTbMoney() {
+        return tbMoney;
+    }
+
+    public void setTbMoney(Float tbMoney) {
+        this.tbMoney = tbMoney;
+    }
+
+    public String getTaId() {
+        return taId;
+    }
+
+    public void setTaId(String taId) {
+        this.taId = taId == null ? null : taId.trim();
+    }
+}

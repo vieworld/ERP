@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.PurchaseMapper">
+
+    <resultMap id="purchaseMap" type="com.warehouse.pojo.Purchase">
+        <id property="purId" column="pur_id" />
+        <result property="purTime" column="pur_time" javaType="DATE" jdbcType="DATE" />
+        <result property="purCode" column="pur_code" />
+        <result property="purPurchase" column="pur_purchase" />
+        <result property="purPhone" column="pur_phone" />
+        <result property="purContacts" column="pur_contacts" />
+        <result property="purMaks" column="pur_maks" />
+        <result property="purAddress" column="pur_addresss"/>
+        <result property="purMethod" column="pur_method" />
+        <result property="purMode" column="pur_mode"/>
+        <result property="spId" column="sp_id" />
+        <result property="pur_state" column="purState" />
+        <result property="username" column="username"/>
+        <result property="purMakeDate" column="pur_makeDate"  javaType="DATE" jdbcType="DATE" />
+        <result property="purModifier" column="purModifier"/>
+        <result property="purModifierDate" column="pur_modifierDate"/>
+        <result property="purArrivalAccount" column="pur_arrivalAccount"/>
+        <result property="purUnArrivalAccount" column="pur_unArrivalAccount"/>
+        <result property="putNum" column="put_num"/>
+        <result property="purSum" column="pur_sum" />
+
+        <collection property="purdetailsList"  ofType="com.warehouse.pojo.Purdetails">
+            <id property="pudId" column="pud_id"/>
+            <result property="pudNum" column="pud_num" />
+            <result property="pudUnPrice" column="pud_unPrice"/>
+            <result property="pudPrice" column="pud_price" />
+            <result property="pudSumPrice" column="pud_sumPrice"/>
+            <result property="pudTaxPrice" column="pud_taxPrice"/>
+            <result property="pudSumMoney" column="pud_sumMoney"/>
+            <result property="pudTime" column="pud_time" />
+            <result property="pudMaks" column="pud_maks"/>
+            <result property="pudProName" column="pud_proName"/>
+            <result property="pudSpe" column="pud_spe"/>
+            <result property="pudUnit" column="pud_unit"/>
+            <result property="pudBrand" column="pud_brand"/>
+            <result property="pudMode" column="pud_mode"/>
+            <result property="pudCategory" column="pud_category"/>
+            <result property="pudCode" column="pud_code"/>
+            <result property="pudOrder" column="pud_order"/>
+        </collection>
+        <collection property="customList" ofType="com.warehouse.pojo.Custom">
+            <!--<id property="cusId" column="cus_id"/>-->
+            <result property="cusName" column="cus_name"/>
+            <result property="cusContent" column="cus_content"/>
+        </collection>
+
+        <collection property="enclosureList" ofType="com.warehouse.pojo.Enclosure">
+            <!--<id property="enId" column="en_id"/>-->
+            <result property="enName" column="en_name"/>
+        </collection>
+
+
+    </resultMap>
+
+    <select id="getPurchaseCount" parameterType="map" resultType="java.lang.Integer">
+        select count(*) from purchase
+        where pur_time = #{map.date} and username = #{map.username}
+    </select>
+    <!--添加采购信息-->
+    <insert id="addPurchase" useGeneratedKeys="true" parameterType="com.warehouse.pojo.Purchase" >
+        <selectKey order="BEFORE" resultType="Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+        insert into purchase(pur_id, pur_time, pur_code, pur_purchase, pur_contacts, pur_maks,pur_address,pur_method,
+        pur_mode,pur_state, sp_id,username,pur_makeDate,put_num,pur_sum)values(#{purId}, #{purTime},#{purCode},#{purPurchase},
+        #{purContacts},#{purMaks},#{purAddress},#{purMethod},#{purMode},#{purState},#{spId},#{username},#{purMakeDate},#{putNum},
+        #{purSum}
+        )
+    </insert>
+
+    <select id="getPurchaseInfo" parameterType="java.lang.String" resultMap="purchaseMap">
+        select a.pur_id,a.pur_time,a.pur_code,a.pur_purchase,a.pur_phone,a.pur_contacts,a.pur_maks,a.pur_address,a.pur_method,
+        a.pur_method,a.pur_mode,a.sp_id,a.pur_state,username,a.pur_makeDate,a.pur_modifier,a.pur_modifierDate,a.pur_paidPrice,a.pur_arrivalAccount,
+        a.pur_unArrivalAccount,a.put_num,pur_sum,b.pud_id,b.pud_num,b.pud_unPrice,b.pud_price,b.pud_sumPrice,b.pud_taxPrice,b.pud_sumMoney,b.pud_time,b.pud_maks,
+        b.pud_proName,b.pud_spe,b.pud_unit,b.pud_brand,b.pud_mode,b.pud_category,b.pud_code,b.pud_order,
+        c.cus_name,c.cus_content,d.en_name from purchase as a
+        left join purdetails as b
+        on a.pur_id = b.pur_id
+        left join custom as c
+        on a.pur_id = c.pur_id
+        left join enclosure as d
+        on a.pur_id = d.pur_id
+        where a.pur_id = #{pudId};
+    </select>
+
+
+</mapper>

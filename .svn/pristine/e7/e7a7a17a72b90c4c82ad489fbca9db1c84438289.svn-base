@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.InvoiceTypeMapper">
+
+    <select id="getAllInvoiceTypeInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.InvoiceType">
+        select invt_id, invt_name from invoiceType
+        <where>
+            username is null
+            <if test="username != null and username != ''">
+                or username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addInvoiceTypeInfo" parameterType="com.warehouse.pojo.InvoiceType">
+        insert into invoiceType(invt_id, invt_name, username)values(
+            #{invtId}, #{invtName}, #{username}
+        )
+    </insert>
+
+    <update id="updateInvoiceTypeInfo" parameterType="com.warehouse.pojo.InvoiceType">
+        update invoiceType
+        set invt_name = #{invtName}
+        where invt_id = #{invtId}
+    </update>
+    
+    <delete id="deleteInvoiceTypeInfo" parameterType="java.lang.String">
+        delete from invoiceType
+        where invt_id = #{id}
+    </delete>
+    
+</mapper>

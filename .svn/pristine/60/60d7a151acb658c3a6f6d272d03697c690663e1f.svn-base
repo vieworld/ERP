@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  
+	 
+  
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  <commentGenerator>
+	  <property name="suppressAllComments" value="true" />
+	</commentGenerator>
+    <jdbcConnection
+    	driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/warehouse"
+        userId="root"
+        password="123456"
+        >
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.warehouse.pojo" targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <!--<sqlMapGenerator targetPackage="com.mark.mapper"  targetProject="./src/main/java">-->
+      <!--<property name="enableSubPackages" value="true" />-->
+    <!--</sqlMapGenerator>-->
+
+    <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.mark.mapper"  targetProject="./src/main/java">-->
+      <!--<property name="enableSubPackages" value="true" />-->
+    <!--</javaClientGenerator>-->
+
+    <table  tableName="users" domainObjectName="Users" ></table>
+    <table  tableName="production" domainObjectName="Production" ></table>
+    <table tableName="staff" domainObjectName="Staff"></table>
+    <table tableName="suremaks" domainObjectName="Suremaks"></table>
+    <table tableName="supplier" domainObjectName="Supplier"></table>
+    <table tableName="customerlevel" domainObjectName="Customerlevel"></table>
+    <table tableName="enclosure" domainObjectName="Enclosure"></table>
+    <table tableName="caddress" domainObjectName="Caddress"></table>
+    <table tableName="state" domainObjectName="State"></table>
+    <table tableName="curemaks" domainObjectName="Curemaks"></table>
+    <table tableName="otherwarehousing" domainObjectName="Otherwarehousing"></table>
+    <table tableName="customer" domainObjectName="Customer"></table>
+    <table tableName="item" domainObjectName="Item"></table>
+    <table tableName="tabuding" domainObjectName="Tabuding"></table>
+    <table tableName="goods" domainObjectName="Goods"></table>
+    <table tableName="Warehousing" domainObjectName="Warehousing"></table>
+    <table tableName="waregoods" domainObjectName="Waregoods"></table>
+    <table tableName="express" domainObjectName="Express"></table>
+    <table tableName="warehouse" domainObjectName="Warehouse"></table>
+    <table tableName="goodsItem" domainObjectName="GoodsItem"></table>
+    <table tableName="unit" domainObjectName="Unit"></table>
+    <table tableName="taxRate" domainObjectName="TaxRate"></table>
+    <table tableName="category" domainObjectName="Category"></table>
+    <table tableName="img" domainObjectName="Img"></table>
+    <table tableName="invoiceBuiding" domainObjectName="InvoiceBuiding"></table>
+    <table tableName="invoiceType" domainObjectName="InvoiceType"></table>
+    <table tableName="invoice" domainObjectName="Invoice"></table>
+    <table tableName="ticketArrival" domainObjectName="TicketArrival"></table>
+    <table tableName="inventory" domainObjectName="Inventory"></table>
+    <table tableName="account" domainObjectName="Account"></table>
+    <table tableName="income" domainObjectName="Income"></table>
+    <table tableName="result" domainObjectName="Result"></table>
+    <table tableName="binding" domainObjectName="Binding"></table>
+    <table tableName="retrieval" domainObjectName="Retrieval"></table>
+    <table tableName="type" domainObjectName="Type"></table>
+    <table tableName="expend" domainObjectName="Expend"></table>
+    <table tableName="exbinding" domainObjectName="Exbinding"></table>
+    <table tableName="allocation" domainObjectName="Allocation"></table>
+    <table tableName="allocationItems" domainObjectName="AllocationItems"></table>
+    <table tableName="allGoodsItem" domainObjectName="AllGoodsItem"></table>
+
+  </context>
+</generatorConfiguration>

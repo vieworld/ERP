@@ -1,0 +1,29 @@
+package com.warehouse.service;
+
+import com.warehouse.Vo.CustomVo;
+import com.warehouse.pojo.Custom;
+import com.warehouse.pojo.Users;
+
+import java.util.List;
+
+public interface CustomService {
+    /**
+     * 查询用户采购自定义信息
+     *
+     * @param user
+     * @return
+     */
+    List<String> getAllPurchaseCustomInfo(Users user);
+
+    //查询自定义信息
+    List<CustomVo> getAllCustomInfo(String username, int id);
+
+    //添加自定义信息
+    void addCustomInfo(Custom custom);
+
+    //更新自定义信息
+    void updateCustomInfo(Custom custom);
+
+    //删除自定义信息
+    void deleteCustomInfo(String id);
+}

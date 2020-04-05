@@ -1,0 +1,167 @@
+package com.warehouse.service.impl;
+
+import com.github.pagehelper.PageInfo;
+import com.warehouse.DTO.SaleOrderItemDTO;
+import com.warehouse.Vo.PurchaseVo;
+import com.warehouse.common.DayUtils;
+import com.warehouse.common.DocumentUtils;
+import com.warehouse.common.FileUploadUtils;
+import com.warehouse.common.UUIDUtils;
+import com.warehouse.mapper.*;
+import com.warehouse.pojo.*;
+import com.warehouse.service.SaleOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class SaleOrderServiceImpl implements SaleOrderService {
+
+    //    private static final String PATTERN = "0000";//销售订单后缀编号格式
+    private static final String SALEORDERID = "XS";
+
+
+    @Autowired
+    private SaleOrderMapper saleOrderMapper;
+
+    @Autowired
+    private DocumentNumberMapper documentNumberMapper;
+
+    @Autowired
+    private ProductMapper productMapper;
+
+    @Autowired
+    private PurdetailsMapper purdetailsMapper;
+
+    @Autowired
+    private CustomMapper customMapper;
+
+    @Autowired
+    private EnclosureMapper enclosureMapper;
+
+
+    @Override
+    public SaleOrder addSaleOrderInfo(SaleOrder saleOrder, MultipartFile[] fileName) throws IOException {
+
+        String date = null;//销售时间格式
+        String productId = "WP";
+
+        //销售编号
+        //获取当天入库的单数并且规范编号后缀
+        int count = (saleOrderMapper.getSaleOrderCount(saleOrder.getSoTime(), saleOrder.getUsername()) + 1);
+//        Format format = new DecimalFormat(PATTERN);
+        String saleCount = DocumentUtils.fourSuffix(count);
+
+
+        System.out.println("================================>1");
+        DocumentNumber number = null;
+        DocumentPrefix prefix = documentNumberMapper.getDocumentPrefix(saleOrder.getUsername(), SALEORDERID);
+        if (prefix != null) {
+            number = documentNumberMapper.getDocumentNumberUser(SALEORDERID, saleOrder.getUsername());
+        } else {
+            number = documentNumberMapper.getDocumentNumber(SALEORDERID);
+        }
+        System.out.println("================================>1.5");
+        System.out.println("================================>docnDateType:" + number.toString());
+        if (number.getDocnDateType() == 0) {
+            //时间转换
+            date = DayUtils.DateTransfrom(saleOrder.getSoTime()).replace("-", "");//20200202
+
+        } else {
+            date = DayUtils.DateTransfrom(saleOrder.getSoTime()).replace("-", "").substring(2);//200202
+        }
+
+
+        String id = number.getDocumentPrefix().getDpName() + "-" + date + "-" + saleCount;
+        System.out.println("================================>2");
+        System.out.println("------------------------>id" + id);
+
+        //添加物品详情信息
+        List<Purdetails> purdetailsList = saleOrder.getPurdetailsList();
+
+        if (purdetailsList != null) {
+            for (Purdetails purdetails : purdetailsList) {
+                if (purdetails.getPudGoodsId() == null) {
+                    int productCount = productMapper.getProductCount(productId, saleOrder.getUsername()) + 1;
+//                    String Productsuffix = format.format(productCount);
+                    String productSuffix = DocumentUtils.fiveSuffix(productCount);
+
+                    purdetails.setPudGoodsId(productId + productSuffix);
+                    purdetails.setPudId(UUIDUtils.getUUID());
+                    purdetails.setSoId(id);
+                    purdetails.setPudUnQuantity(purdetails.getPudNum());
+                }
+            }
+        }
+
+        purdetailsMapper.addPurdetailsList(purdetailsList);
+        System.out.println("================================>3");
+        saleOrder.setSoMakeDate(new Date());
+        saleOrder.setSoState(0);
+        saleOrder.setSoId(id);
+        saleOrder.setSoUnReceivables(saleOrder.getSoSum());
+        saleOrder.setSoUnInvoice(saleOrder.getSoSum());
+        saleOrder.setSoInvoice(0f);
+        saleOrder.setSoReceivables(0f);
+
+
+        //添加自定义、文件上传信息
+        List<Custom> customList = saleOrder.getCustomList();
+        if (customList.size() > 0) {
+            for (Custom custom : customList) {
+                custom.setCusType(2);
+                custom.setPurId(saleOrder.getSoId());
+            }
+
+            customMapper.addCustomList(customList);
+        }
+
+        System.out.println("================================>4");
+        //添加附件信息
+        List<Enclosure> enclosures = new ArrayList<>();
+        if (fileName != null) {//判断是否上传有附件
+            List<String> path = FileUploadUtils.fileUpload(fileName);
+            for (String s : path) {
+                Enclosure enclosure = new Enclosure();
+                enclosure.setEnName(s);
+                enclosure.setEnId(UUIDUtils.getUUID());
+                enclosure.setPurId(saleOrder.getSoId());
+
+                enclosures.add(enclosure);
+            }
+
+            enclosureMapper.addEnclosureList(enclosures);
+        }
+        //添加销售订单
+        System.out.println("================================>5");
+        saleOrderMapper.addSaleOrderInfo(saleOrder);
+
+        System.out.println("================================>6");
+        return saleOrderMapper.getSaleOrderInfo(saleOrder.getSoId());
+    }
+
+    @Override
+    public PageInfo<SaleOrderItemDTO> getSaleOrderItem(PurchaseVo purchaseVo) {
+
+        PageInfo<SaleOrderItemDTO> pageInfo = new PageInfo<>();
+
+        pageInfo.setPageNum(purchaseVo.getPage());
+        pageInfo.setPageSize(purchaseVo.getTotalItem());
+
+        List<SaleOrderItemDTO> list = saleOrderMapper.getSaleOrderItem(purchaseVo);
+
+        pageInfo.setList(list);
+
+        return pageInfo;
+    }
+
+    @Override
+    public SaleOrder getSaleOrderInfo(String id) {
+        return saleOrderMapper.getSaleOrderInfo(id);
+    }
+}

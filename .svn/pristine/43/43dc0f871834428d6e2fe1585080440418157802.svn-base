@@ -1,0 +1,36 @@
+package com.warehouse.controller;
+
+import com.warehouse.common.JsonData;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+
+
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonData login(Users users){
+
+        Users users1 = userService.getUser(users);
+//        System.out.println(users1.getUsername());
+//        System.out.println(users.getPasswd());
+        if(null != users1){
+            return JsonData.success(users1);
+        }else {
+            return JsonData.faile("用户账号或密码错误");
+        }
+    }
+}

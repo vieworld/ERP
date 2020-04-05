@@ -1,0 +1,23 @@
+package com.warehouse.service.impl;
+
+import com.warehouse.mapper.TaxRateMapper;
+import com.warehouse.pojo.TaxRate;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.TaxRateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TaxRateServiceImpl implements TaxRateService {
+
+    @Autowired
+    private TaxRateMapper taxRateMapper;
+
+
+    @Override
+    public List<String> getAllTaxRateInfo(Users user) {
+        return taxRateMapper.getAllTaxRateInfo(user.getUsername());
+    }
+}

@@ -1,0 +1,30 @@
+package com.warehouse.common;
+
+import com.warehouse.pojo.Users;
+
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UserMap {
+
+    private static Map<String, HttpSession> maps = new HashMap<>();
+
+    public static void addUser(Map<String, HttpSession> map){
+        new UserMap().setMaps(map);
+    }
+
+    public static Users getUser(String key){
+        HttpSession session = maps.get(key);
+
+        return (Users) session.getAttribute("users");
+    }
+
+    public Map<String, HttpSession> getMaps() {
+        return maps;
+    }
+
+    public void setMaps(Map<String, HttpSession> maps) {
+        this.maps = maps;
+    }
+}

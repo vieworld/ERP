@@ -1,0 +1,43 @@
+package com.warehouse.pojo;
+
+public class AllGoodsItem {
+    private String agtId;
+
+    private Integer agtNum;
+
+    private String giId;
+
+    private String allId;
+
+    public String getAgtId() {
+        return agtId;
+    }
+
+    public void setAgtId(String agtId) {
+        this.agtId = agtId == null ? null : agtId.trim();
+    }
+
+    public Integer getAgtNum() {
+        return agtNum;
+    }
+
+    public void setAgtNum(Integer agtNum) {
+        this.agtNum = agtNum;
+    }
+
+    public String getGiId() {
+        return giId;
+    }
+
+    public void setGiId(String giId) {
+        this.giId = giId == null ? null : giId.trim();
+    }
+
+    public String getAllId() {
+        return allId;
+    }
+
+    public void setAllId(String allId) {
+        this.allId = allId == null ? null : allId.trim();
+    }
+}

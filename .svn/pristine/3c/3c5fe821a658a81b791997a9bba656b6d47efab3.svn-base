@@ -1,0 +1,53 @@
+package com.warehouse.pojo;
+
+public class Otherwarehousing {
+    private String owId;
+
+    private String owParty;
+
+    private String owName;
+
+    private String waId;
+
+    private String reId;
+
+    public String getOwId() {
+        return owId;
+    }
+
+    public void setOwId(String owId) {
+        this.owId = owId == null ? null : owId.trim();
+    }
+
+    public String getOwParty() {
+        return owParty;
+    }
+
+    public void setOwParty(String owParty) {
+        this.owParty = owParty == null ? null : owParty.trim();
+    }
+
+    public String getOwName() {
+        return owName;
+    }
+
+    public void setOwName(String owName) {
+        this.owName = owName == null ? null : owName.trim();
+    }
+
+    public String getWaId() {
+        return waId;
+    }
+
+    public void setWaId(String waId) {
+        this.waId = waId == null ? null : waId.trim();
+    }
+
+    public String getReId() {
+        return reId;
+    }
+
+    public void setReId(String reId) {
+        this.reId = reId == null ? null : reId.trim();
+    }
+}

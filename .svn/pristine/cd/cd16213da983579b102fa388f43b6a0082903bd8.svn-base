@@ -1,0 +1,53 @@
+package com.warehouse.pojo;
+
+public class Enclosure {
+    private String eId;
+
+    private String eName;
+
+    private String cId;
+
+    private String spId;
+
+    private String giId;
+
+    public String geteId() {
+        return eId;
+    }
+
+    public void seteId(String eId) {
+        this.eId = eId == null ? null : eId.trim();
+    }
+
+    public String geteName() {
+        return eName;
+    }
+
+    public void seteName(String eName) {
+        this.eName = eName == null ? null : eName.trim();
+    }
+
+    public String getcId() {
+        return cId;
+    }
+
+    public void setcId(String cId) {
+        this.cId = cId == null ? null : cId.trim();
+    }
+
+    public String getSpId() {
+        return spId;
+    }
+
+    public void setSpId(String spId) {
+        this.spId = spId == null ? null : spId.trim();
+    }
+
+    public String getGiId() {
+        return giId;
+    }
+
+    public void setGiId(String giId) {
+        this.giId = giId == null ? null : giId.trim();
+    }
+}

@@ -1,0 +1,103 @@
+package com.warehouse.controller;
+
+import com.warehouse.common.JsonData;
+import com.warehouse.common.UserMap;
+import com.warehouse.pojo.Project;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@Controller
+@RequestMapping("/project")
+public class ProjectController {
+
+    @Autowired
+    private ProjectService projectService;
+
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData getProjectInfo(HttpServletRequest request) {
+//        Users users = (Users) request.getSession().getAttribute("users");
+
+        Users user = UserMap.getUser(request);
+        List<Project> info = null;
+        try {
+            info = projectService.getProjectInfo(user.getUsername());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonData.faile("查询失败");
+        }
+
+        return JsonData.success("查询成功", info);
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonData addProject(@RequestBody Project project, HttpServletRequest request) {
+//        Users users = (Users) request.getSession().getAttribute("users");
+
+        Users user = UserMap.getUser(request);
+        project.setUsername(user.getUsername());
+
+        try {
+            projectService.addProject(project);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonData.faile("添加失败");
+        }
+        return JsonData.success("添加成功");
+    }
+
+
+    @RequestMapping(value = "/getAllProjectInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData getAllProjectInfo(HttpServletRequest request) {
+//        Users users = (Users) request.getSession().getAttribute("users");
+//        users.setUsername("123");
+        Users user = UserMap.getUser(request);
+        List<String> allProjectInfo = null;
+        try {
+
+            allProjectInfo = projectService.getAllProjectInfo(user);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonData.faile("查询失败");
+        }
+
+        return JsonData.success("查询成功", allProjectInfo);
+    }
+
+    @RequestMapping(value = "update", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData update(@RequestBody Project project) {
+
+
+        try {
+            projectService.updateProject(project);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonData.faile("修改失败");
+        }
+
+        return JsonData.success("修改成功");
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData deleteProject(@PathVariable("id") String id) {
+
+        try {
+            projectService.deleteProject(id);
+        } catch (Exception e) {
+            return JsonData.faile("删除失败");
+        }
+        return JsonData.success("删除成功");
+    }
+}

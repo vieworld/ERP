@@ -1,0 +1,38 @@
+package com.warehouse.controller;
+
+import com.warehouse.common.JsonData;
+import com.warehouse.pojo.TaxRate;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.TaxRateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@Controller
+@RequestMapping("/taxrate")
+public class TaxRateController {
+
+    @Autowired
+    private TaxRateService taxRateService;
+
+
+    @RequestMapping(value = "/getAllTaxRateInfo",method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData getAllTaxRateInfo(HttpServletRequest request){
+        Users user = (Users)request.getSession().getAttribute("users");
+
+        List<String> taxRateList = null;
+        try {
+            taxRateList = taxRateService.getAllTaxRateInfo(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return JsonData.faile("查询失败");
+        }
+        return JsonData.success("查询成功",taxRateList);
+    }
+}

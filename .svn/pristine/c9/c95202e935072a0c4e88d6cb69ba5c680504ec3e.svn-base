@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.UserMapper">
+    <select id="getUser" parameterType="com.warehouse.pojo.Users" resultType="com.warehouse.pojo.Users">
+        select username,passwd,company from users
+        where username=#{username} and passwd = #{passwd}
+    </select>
+
+    <insert id="addUser" parameterType="com.warehouse.pojo.Users">
+        insert into users(username, passwd, company,user_type) values(#{username}, #{passwd}, #{company}, #{userType})
+    </insert>
+</mapper>

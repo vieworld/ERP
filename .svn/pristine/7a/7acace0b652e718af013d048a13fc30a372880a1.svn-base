@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.CustomMapper">
+    <insert id="addCustomList" parameterType="list">
+        insert into custom(cus_id, cus_name, cus_content, pur_id, cus_type) values
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.cusId},#{item.cusName}, #{item.cusContent}, #{item.cusPurId}, #{item.cusType}
+        </foreach>
+    </insert>
+    
+    
+    <select id="getAllPurchaseCustomInfo" parameterType="java.lang.String" resultType="java.lang.String">
+        select cus_id, cus_content from custom
+        <where>
+            username is null and pur_id is not null
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAllCustomInfo"  resultType="com.warehouse.Vo.CustomVo">
+        select cus_id, cus_name, cus_content from custom
+        where cus_type = #{id} and (username = #{username} or username is null)
+    </select>
+
+    <insert id="addCustomInfo" parameterType="com.warehouse.pojo.Custom">
+        insert into custom(cus_id, cus_name, cus_content, pro_id, sp_id, pur_id, so_id, c_id, inb_id, out_id, cus_type, username)values(
+            #{cusId}, #{cusName}, #{cusContent}, #{proId}, #{spId}, #{purId}, #{soId}, #{cId}, #{inbId}, #{outId}, #{cusType}, #{username}
+        )
+    </insert>
+
+    <update id="updateCustomInfo" parameterType="com.warehouse.pojo.Custom">
+        update custom
+        set cus_name = #{cusName}
+        where cus_id = #{cusId}
+    </update>
+
+    <delete id="deleteCustomInfo" parameterType="java.lang.String">
+        delete from custom
+        where cus_id = #{id}
+    </delete>
+</mapper>

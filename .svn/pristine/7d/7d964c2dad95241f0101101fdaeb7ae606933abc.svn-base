@@ -1,0 +1,209 @@
+package com.warehouse.pojo;
+
+import java.util.Date;
+import java.util.List;
+
+public class Purdetails {
+    private String pudId;
+
+    private Integer pudNum;
+
+    private Float pudUnprice;
+
+    private Float pudPrice;
+
+    private Float pudTaxprice;
+
+    private Float pudSunmoney;
+
+    private Date pudTime;
+
+    private String pudMaks;
+
+    private String piProname;
+
+    private String piSpe;
+
+    private String piUnti;
+
+    private String piBrand;
+
+    private String piModael;
+
+    private String piCategory;
+
+    private String piCode;
+
+    private String piOrder;
+
+    private String purId;
+
+    private String soId;
+
+    private String inbId;
+
+    private String outId;
+
+
+    public String getPudId() {
+        return pudId;
+    }
+
+    public void setPudId(String pudId) {
+        this.pudId = pudId == null ? null : pudId.trim();
+    }
+
+    public Integer getPudNum() {
+        return pudNum;
+    }
+
+    public void setPudNum(Integer pudNum) {
+        this.pudNum = pudNum;
+    }
+
+    public Float getPudUnprice() {
+        return pudUnprice;
+    }
+
+    public void setPudUnprice(Float pudUnprice) {
+        this.pudUnprice = pudUnprice;
+    }
+
+    public Float getPudPrice() {
+        return pudPrice;
+    }
+
+    public void setPudPrice(Float pudPrice) {
+        this.pudPrice = pudPrice;
+    }
+
+    public Float getPudTaxprice() {
+        return pudTaxprice;
+    }
+
+    public void setPudTaxprice(Float pudTaxprice) {
+        this.pudTaxprice = pudTaxprice;
+    }
+
+    public Float getPudSunmoney() {
+        return pudSunmoney;
+    }
+
+    public void setPudSunmoney(Float pudSunmoney) {
+        this.pudSunmoney = pudSunmoney;
+    }
+
+    public Date getPudTime() {
+        return pudTime;
+    }
+
+    public void setPudTime(Date pudTime) {
+        this.pudTime = pudTime;
+    }
+
+    public String getPudMaks() {
+        return pudMaks;
+    }
+
+    public void setPudMaks(String pudMaks) {
+        this.pudMaks = pudMaks == null ? null : pudMaks.trim();
+    }
+
+    public String getPiProname() {
+        return piProname;
+    }
+
+    public void setPiProname(String piProname) {
+        this.piProname = piProname == null ? null : piProname.trim();
+    }
+
+    public String getPiSpe() {
+        return piSpe;
+    }
+
+    public void setPiSpe(String piSpe) {
+        this.piSpe = piSpe == null ? null : piSpe.trim();
+    }
+
+    public String getPiUnti() {
+        return piUnti;
+    }
+
+    public void setPiUnti(String piUnti) {
+        this.piUnti = piUnti == null ? null : piUnti.trim();
+    }
+
+    public String getPiBrand() {
+        return piBrand;
+    }
+
+    public void setPiBrand(String piBrand) {
+        this.piBrand = piBrand == null ? null : piBrand.trim();
+    }
+
+    public String getPiModael() {
+        return piModael;
+    }
+
+    public void setPiModael(String piModael) {
+        this.piModael = piModael == null ? null : piModael.trim();
+    }
+
+    public String getPiCategory() {
+        return piCategory;
+    }
+
+    public void setPiCategory(String piCategory) {
+        this.piCategory = piCategory == null ? null : piCategory.trim();
+    }
+
+    public String getPiCode() {
+        return piCode;
+    }
+
+    public void setPiCode(String piCode) {
+        this.piCode = piCode == null ? null : piCode.trim();
+    }
+
+    public String getPiOrder() {
+        return piOrder;
+    }
+
+    public void setPiOrder(String piOrder) {
+        this.piOrder = piOrder == null ? null : piOrder.trim();
+    }
+
+    public String getPurId() {
+        return purId;
+    }
+
+    public void setPurId(String purId) {
+        this.purId = purId == null ? null : purId.trim();
+    }
+
+    public String getSoId() {
+        return soId;
+    }
+
+    public void setSoId(String soId) {
+        this.soId = soId == null ? null : soId.trim();
+    }
+
+    public String getInbId() {
+        return inbId;
+    }
+
+    public void setInbId(String inbId) {
+        this.inbId = inbId == null ? null : inbId.trim();
+    }
+
+    public String getOutId() {
+        return outId;
+    }
+
+    public void setOutId(String outId) {
+        this.outId = outId == null ? null : outId.trim();
+    }
+
+
+}

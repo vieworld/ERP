@@ -1,0 +1,31 @@
+package com.warehouse.controller;
+
+import com.warehouse.Vo.ChartVo;
+import com.warehouse.common.JsonData;
+import com.warehouse.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/home")
+public class IndexController {
+
+    @Autowired
+    private IndexService indexService;
+
+    @RequestMapping(value = "/sale", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonData saleChart(@RequestParam("time") String time){
+
+        ChartVo chartVo = null;
+        try{
+           chartVo = indexService.getSaleChart(time);
+        }catch (Exception e){
+            e.printStackTrace();
+            return JsonData.faile("查询失败");
+        }
+
+        return JsonData.success("查询成功",chartVo);
+    }
+}

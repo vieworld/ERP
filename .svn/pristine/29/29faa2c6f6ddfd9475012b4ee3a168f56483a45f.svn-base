@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.IncomeTypeMapper">
+
+    <select id="getAllIncomeTypeInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.IncomeType">
+        select int_id, int_type from incomeType
+        where username = #{username}
+    </select>
+
+    <insert id="addIncomeTypeInfo" parameterType="com.warehouse.pojo.IncomeType">
+        insert into incomeType(int_id, int_type, username)values(
+        #{intId}, #{intType}, #{username}
+        )
+    </insert>
+
+    <update id="updateIncomeTypeInfo" parameterType="com.warehouse.pojo.IncomeType">
+        update incomeType
+        set int_type = #{intType}
+        where int_id = #{intId}
+    </update>
+
+    <delete id="deleteIncomeInfo" parameterType="java.lang.String">
+        delete from incomeType
+        where int_id = #{id}
+    </delete>
+</mapper>

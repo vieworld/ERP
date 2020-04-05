@@ -1,0 +1,193 @@
+package com.warehouse.pojo;
+
+public class GoodsItem {
+    private String giId;
+
+    private String giName;
+
+    private String giSpe;
+
+    private String giBrand;
+
+    private String giModel;
+
+    private Float giUntaxedprice;
+
+    private Float giUnitprice;
+
+    private Float giTaxamount;
+
+    private Float fiMoney;
+
+    private String giCode;
+
+    private String giRemaks;
+
+    private Integer giNumber;
+
+    private Integer giUpperlimit;
+
+    private Integer giLowerlimit;
+
+    private Float giPurchaseprice;
+
+    private Float fiSaleprice;
+
+    private String caId;
+
+    private String wId;
+
+    private String wgId;
+
+    public String getGiId() {
+        return giId;
+    }
+
+    public void setGiId(String giId) {
+        this.giId = giId == null ? null : giId.trim();
+    }
+
+    public String getGiName() {
+        return giName;
+    }
+
+    public void setGiName(String giName) {
+        this.giName = giName == null ? null : giName.trim();
+    }
+
+    public String getGiSpe() {
+        return giSpe;
+    }
+
+    public void setGiSpe(String giSpe) {
+        this.giSpe = giSpe == null ? null : giSpe.trim();
+    }
+
+    public String getGiBrand() {
+        return giBrand;
+    }
+
+    public void setGiBrand(String giBrand) {
+        this.giBrand = giBrand == null ? null : giBrand.trim();
+    }
+
+    public String getGiModel() {
+        return giModel;
+    }
+
+    public void setGiModel(String giModel) {
+        this.giModel = giModel == null ? null : giModel.trim();
+    }
+
+    public Float getGiUntaxedprice() {
+        return giUntaxedprice;
+    }
+
+    public void setGiUntaxedprice(Float giUntaxedprice) {
+        this.giUntaxedprice = giUntaxedprice;
+    }
+
+    public Float getGiUnitprice() {
+        return giUnitprice;
+    }
+
+    public void setGiUnitprice(Float giUnitprice) {
+        this.giUnitprice = giUnitprice;
+    }
+
+    public Float getGiTaxamount() {
+        return giTaxamount;
+    }
+
+    public void setGiTaxamount(Float giTaxamount) {
+        this.giTaxamount = giTaxamount;
+    }
+
+    public Float getFiMoney() {
+        return fiMoney;
+    }
+
+    public void setFiMoney(Float fiMoney) {
+        this.fiMoney = fiMoney;
+    }
+
+    public String getGiCode() {
+        return giCode;
+    }
+
+    public void setGiCode(String giCode) {
+        this.giCode = giCode == null ? null : giCode.trim();
+    }
+
+    public String getGiRemaks() {
+        return giRemaks;
+    }
+
+    public void setGiRemaks(String giRemaks) {
+        this.giRemaks = giRemaks == null ? null : giRemaks.trim();
+    }
+
+    public Integer getGiNumber() {
+        return giNumber;
+    }
+
+    public void setGiNumber(Integer giNumber) {
+        this.giNumber = giNumber;
+    }
+
+    public Integer getGiUpperlimit() {
+        return giUpperlimit;
+    }
+
+    public void setGiUpperlimit(Integer giUpperlimit) {
+        this.giUpperlimit = giUpperlimit;
+    }
+
+    public Integer getGiLowerlimit() {
+        return giLowerlimit;
+    }
+
+    public void setGiLowerlimit(Integer giLowerlimit) {
+        this.giLowerlimit = giLowerlimit;
+    }
+
+    public Float getGiPurchaseprice() {
+        return giPurchaseprice;
+    }
+
+    public void setGiPurchaseprice(Float giPurchaseprice) {
+        this.giPurchaseprice = giPurchaseprice;
+    }
+
+    public Float getFiSaleprice() {
+        return fiSaleprice;
+    }
+
+    public void setFiSaleprice(Float fiSaleprice) {
+        this.fiSaleprice = fiSaleprice;
+    }
+
+    public String getCaId() {
+        return caId;
+    }
+
+    public void setCaId(String caId) {
+        this.caId = caId == null ? null : caId.trim();
+    }
+
+    public String getwId() {
+        return wId;
+    }
+
+    public void setwId(String wId) {
+        this.wId = wId == null ? null : wId.trim();
+    }
+
+    public String getWgId() {
+        return wgId;
+    }
+
+    public void setWgId(String wgId) {
+        this.wgId = wgId == null ? null : wgId.trim();
+    }
+}

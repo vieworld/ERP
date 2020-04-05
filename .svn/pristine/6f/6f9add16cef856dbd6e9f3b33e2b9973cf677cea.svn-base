@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.InboundMapper">
+    <select id="getInboundCount" resultType="java.lang.Integer">
+        select count(*) from inbound
+        where username = #{username} and inb_date = #{inbDate}
+    </select>
+
+    <insert id="addInboundInfo" parameterType="com.warehouse.pojo.Inbound">
+        <selectKey resultType="Integer" order="BEFORE">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into inbound(inb_id, inb_type, inb_date, inb_ware, inb_code, inb_project, inb_handle,
+        inb_maks, inb_modifier, inb_modifierDate, inb_num, inb_sum, username)values(
+        #{inbId}, #{inbType}, #{inbDate}, #{inbWare}, #{inbCode}, #{inbProject}, #{inbHandle}, #{inbMaks},
+        #{inbModifier}, #{inbModifierdate},
+        #{inbNum}, #{inbSum}, #{username}
+        )
+    </insert>
+
+    <select id="getPurchaseInboundInfo" parameterType="java.lang.String"
+            resultType="com.warehouse.DTO.PurchaseInboundDTO">
+        select a.inb_id, inb_date, inb_sum, inb_handle,inb_maks, ware_name from inbound as a
+        join warehouse as b on a.inb_ware= b.ware_id
+        join purInbound as c
+        on c.inb_id = a.inb_id
+        where pur_id = #{id}
+    </select>
+</mapper>

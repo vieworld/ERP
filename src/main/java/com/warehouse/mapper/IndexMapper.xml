@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.IndexMapper">
+
+    <select id="getCountAmount" parameterType="map" resultType="java.lang.Integer">
+        select count(*) from saleOrder
+        <where>
+            <if test="map.myTime != null and map.myTime !=''">
+                so_time like '%${map.myTime}%'
+            </if>
+            <if test="map.username != null and map.username != ''">
+                and username = #{map.username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getTotalAmount" parameterType="map" resultType="java.lang.Float">
+        select sum(so_sum) from saleOrder
+        <where>
+            <if test="map.myTime != null and map.myTime !=''">
+                so_time like '%${map.myTime}%'
+            </if>
+            <if test="map.username != null and map.username != ''">
+                and username = #{map.username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAmount" parameterType="com.warehouse.Vo.DayVo" resultType="java.lang.Float">
+        select sum(so_sum) from saleOrder
+        where so_time between #{minDay} and #{maxDay} and username=#{username}
+    </select>
+
+    <select id="getCount" parameterType="com.warehouse.Vo.DayVo" resultType="java.lang.Integer">
+        select count(*) from saleOrder
+        where so_time between #{minDay} and #{maxDay} and username=#{username}
+    </select>
+
+    <select id="getMonthAmount" parameterType="map" resultType="java.lang.Float">
+        select sum(so_sum) from saleOrder
+        where username=#{map.username} and so_time like '%${map.month}%'
+
+    </select>
+
+    <select id="getMonthCount" parameterType="map" resultType="java.lang.Integer">
+        select count(*) from saleOrder
+        where so_time like '%${map.month}%' and username=#{map.username}
+    </select>
+
+    <select id="getPurCountAmount" parameterType="map" resultType="java.lang.Integer">
+        select count(*) from purchase
+        <where>
+            <if test="map.myTime != null and map.myTime !=''">
+                pur_time like '%${map.myTime}%'
+            </if>
+            <if test="map.username != null and map.username != ''">
+                and username = #{map.username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getPurTotalAmount" parameterType="map" resultType="java.lang.Float">
+        select sum(pur_sum) from purchase
+        <where>
+            <if test="map.myTime != null and map.myTime !=''">
+                pur_time like '%${map.myTime}%'
+            </if>
+            <if test="map.username != null and map.username != ''">
+                and username = #{map.username}
+            </if>
+        </where>
+    </select>
+
+    <select id="getPurAmount" parameterType="com.warehouse.Vo.DayVo" resultType="java.lang.Float">
+        select sum(pur_sum) from purchase
+        where pur_time between #{minDay} and #{maxDay} and username =#{username}
+    </select>
+
+    <select id="getPurCount" parameterType="com.warehouse.Vo.DayVo" resultType="java.lang.Integer">
+        select count(*) from purchase
+        where pur_time between #{minDay} and #{maxDay} and username =#{username}
+    </select>
+
+    <select id="getPurMonthAmount" parameterType="map" resultType="java.lang.Float">
+        select sum(pur_sum) from purchase
+        where pur_time like '%${map.month}%' and username =#{map.username}
+    </select>
+
+    <select id="getPurMonthCount" parameterType="map" resultType="java.lang.Integer">
+        select count(*) from purchase
+        where pur_time like '%${map.month}%' and username =#{map.username}
+    </select>
+
+</mapper>

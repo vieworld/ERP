@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class Express {
+    private String epId;
+
+    private String epName;
+
+    public String getEpId() {
+        return epId;
+    }
+
+    public void setEpId(String epId) {
+        this.epId = epId == null ? null : epId.trim();
+    }
+
+    public String getEpName() {
+        return epName;
+    }
+
+    public void setEpName(String epName) {
+        this.epName = epName == null ? null : epName.trim();
+    }
+}

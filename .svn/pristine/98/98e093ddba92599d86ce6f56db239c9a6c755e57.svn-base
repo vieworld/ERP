@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.CategoryMapper">
+
+    <select id="getAllCategoryInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.Category">
+        select ca_id, ca_name, ca_parent, username from category
+        where username = #{username} or username is null;
+    </select>
+
+    <insert id="addCategoryInfo" parameterType="com.warehouse.pojo.Category">
+        insert into category(ca_id, ca_name, ca_parent, username)values(
+            #{caId}, #{caName}, #{caParent}, #{username}
+        )
+    </insert>
+
+    <update id="updateCategoryInfo" parameterType="com.warehouse.pojo.Category">
+        update category
+        set ca_name = #{caName}
+        where ca_id = #{caId}
+    </update>
+
+    <delete id="deleteCategoryInfo" parameterType="java.lang.String">
+        delete from category
+        where ca_id = #{id}
+    </delete>
+
+</mapper>

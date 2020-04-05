@@ -1,0 +1,251 @@
+package com.warehouse.service.impl;
+
+import com.github.pagehelper.PageInfo;
+import com.warehouse.Vo.ProcurementDetailsVo;
+import com.warehouse.Vo.PurchaseDetailsVo;
+import com.warehouse.Vo.PurchaseVo;
+import com.warehouse.common.DayUtils;
+import com.warehouse.common.FileUploadUtils;
+import com.warehouse.common.UUIDUtils;
+import com.warehouse.mapper.*;
+import com.warehouse.pojo.*;
+import com.warehouse.service.PurchaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+@Service
+public class PurchaseServiceImpl implements PurchaseService {
+
+    private static final String PURCHASEID = "CG";
+    private static final String PRODCUTPREFIX = "WP";
+
+    @Autowired
+    private PurchaseMapper purchaseMapper;
+
+    @Autowired
+    private DocumentNumberMapper documentNumberMapper;
+
+    @Autowired
+    private ProductMapper productMapper;
+
+    @Autowired
+    private CustomMapper customMapper;
+
+    @Autowired
+    private PurdetailsMapper purdetailsMapper;
+
+    @Autowired
+    private EnclosureMapper enclosureMapper;
+
+    @Autowired
+    private ProjectMapper projectMapper;
+
+    @Autowired
+    private SupplierMapper supplierMapper;
+
+
+    @Override
+    public Purchase addPurchase(Purchase purchase, MultipartFile[] fileName, Users users) throws IOException {
+        //添加成功后返回的id
+        String purId = null;
+        String date = null;//时间格式
+        String proId = "WP";
+        List<Enclosure> enclosures = new ArrayList<>();
+
+//        HashMap<String, Object> map = new HashMap<>();
+//        map.put("username", users.getUsername());
+////        map.put("username","123");
+////        map.put("date", DayUtils.DateTransfrom(purchase.getPurTime()));
+//        map.put("date", purchase.getPurTime());
+//        map.put("proId", "WP");
+        int purchaseCount1 = purchaseMapper.getPurchaseCount(purchase.getPurTime(), users.getUsername());
+        int count = (purchaseCount1 + 1);//查询当天建立的采购单数
+
+        System.out.println("==========>count:" + count);
+
+        DocumentNumber number = null;
+        if (documentNumberMapper.getDocumentPrefix(users.getUsername(), PURCHASEID) != null) {
+            number = documentNumberMapper.getDocumentNumberUser(PURCHASEID, users.getUsername());//查询单据编号规则
+        } else {
+            number = documentNumberMapper.getDocumentNumber(PURCHASEID);
+        }
+        System.out.println("============>purTime:" + purchase.getPurTime());
+        System.out.println("===============>number" + number);
+        //判断单据编号日期格式
+        if (number.getDocnDateType() == 0) {
+            //时间转换
+            date = DayUtils.DateTransfrom(purchase.getPurTime()).replace("-", "");//20200202
+//           date = DayUtils.getDate().replace("-",""); //20200202
+
+        } else {
+            date = DayUtils.DateTransfrom(purchase.getPurTime()).replace("-", "").substring(2);//200202
+//            date = DayUtils.getDate().replace("-","").substring(2);
+        }
+        //编号后缀
+        String suffix = String.valueOf(count);
+        for (int i = 0; i <= 3; i++) {
+            if (suffix.length() == 3) {
+                break;
+            }
+            suffix = "0" + suffix;
+        }
+        System.out.println("==================>prefix" + number.getDocumentPrefix().getDpName());
+        String id = number.getDocumentPrefix().getDpName() + "-" + date + "-" + suffix;
+        purchase.setPurId(id);
+
+        List<Purdetails> list = purchase.getPurdetailsList();
+
+        //添加物品详情编号以及物品编号
+        if (list.size() > 0) {
+            for (Purdetails purdetails : list) {
+                purdetails.setPudId(UUIDUtils.getUUID());
+                purdetails.setPurId(purchase.getPurId());
+                if (purdetails.getPudGoodsId() == null) {
+                    int ProductCount = productMapper.getProductCount(proId, users.getUsername()) + 1;//查询建立的物品数
+                    String ProductSuffix = String.valueOf(ProductCount);
+
+                    for (int i = 0; i <= 4; i++) {
+                        if (ProductSuffix.length() == 4) {
+                            break;
+                        }
+                        ProductSuffix = "0" + ProductSuffix;
+
+                    }
+
+                    purdetails.setPudGoodsId(PRODCUTPREFIX + ProductSuffix);
+                }
+
+            }
+            purdetailsMapper.addPurdetailsList(list);
+        }
+//            purchase.setPurdetailsList(list);
+
+        purchase.setUsername(users.getUsername());
+//        purchase.setUsername("123");
+        purchase.setPurMakeDate(new Date());
+        purchase.setPurState(0);
+
+        List<Custom> customList = purchase.getCustomList();
+        if (customList.size() > 0) {
+            for (Custom custom : customList) {
+                custom.setCusType(2);
+                custom.setPurId(purchase.getPurId());
+            }
+
+            customMapper.addCustomList(customList);
+        }
+        //添加附件信息
+        if (fileName != null) {//判断是否上传有附件
+            List<String> path = FileUploadUtils.fileUpload(fileName);
+            for (String s : path) {
+                Enclosure enclosure = new Enclosure();
+                enclosure.setEnName(s);
+                enclosure.setEnId(UUIDUtils.getUUID());
+                enclosure.setPurId(purchase.getPurId());
+
+                enclosures.add(enclosure);
+            }
+
+            enclosureMapper.addEnclosureList(enclosures);
+        }
+
+        System.out.println("================>purchase ==>purId" + purchase.getPurId());
+
+        int make = purchaseMapper.addPurchase(purchase);
+
+        System.out.println("==============>purId:" + purchase.getPurId());
+
+        return purchaseMapper.getPurchaseInfo(purchase.getPurId());
+    }
+
+
+    @Override
+    public PageInfo<PurchaseDetailsVo> getAllPurchaseInfo(PurchaseVo purchaseVo) {
+
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageSize(purchaseVo.getPage());
+        pageInfo.setPageNum(purchaseVo.getTotalItem());
+
+        List<PurchaseDetailsVo> list = purchaseMapper.getAllPurchaseInfo(purchaseVo);
+
+        pageInfo.setList(list);
+
+
+        return pageInfo;
+    }
+
+    @Override
+    public List<String> getQueryItem(String username) {
+
+        List<String> list = new ArrayList<>();
+
+        List<String> allProjectInfo = projectMapper.getAllProjectInfo(username);
+        List<String> allPurchaseId = purchaseMapper.getAllPurchaseId(username);
+        List<String> allProductName = purdetailsMapper.getAllProductName(allPurchaseId);
+        List<String> allSupplier = supplierMapper.getAllSupplierName(username);
+
+        list.addAll(allProjectInfo);
+        list.addAll(allPurchaseId);
+        list.addAll(allProductName);
+        list.addAll(allSupplier);
+
+        return list;
+    }
+
+    @Override
+    public Purchase getPurchaseInfo(String id) {
+        return purchaseMapper.getPurchaseInfo(id);
+    }
+
+    @Override
+    public PageInfo<Purchase> getPurchaseDetails(ProcurementDetailsVo procurementDetailsVo) {
+
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageNum(procurementDetailsVo.getPage());
+        pageInfo.setPageSize(procurementDetailsVo.getPageSize());
+
+
+        pageInfo.setList(purchaseMapper.getPurchaseDetails(procurementDetailsVo));
+
+        return pageInfo;
+    }
+
+    @Override
+    public void updatePurchaseInfo(Purchase purchase, MultipartFile[] fileName) throws IOException {
+
+        if (purchase.getPurdetailsList() != null) {
+            purdetailsMapper.updatePurdetailsInfo(purchase.getPurdetailsList());//更新物品详情
+        }
+        //更新自定义信息
+        List<Custom> customList = purchase.getCustomList();
+        if (customList.size() > 0) {
+            customMapper.updateCustomList(customList);
+        }
+
+        //更新附件信息
+        List<Enclosure> enclosures = purchase.getEnclosureList();
+        //添加附件信息
+        if (fileName != null) {//判断是否上传有附件
+            enclosureMapper.updateEnclosureList(enclosures);
+        } else {
+            enclosureMapper.deleEnclosureList(purchase.getPurId());
+        }
+
+        purchaseMapper.updatePurchaseInfo(purchase);
+
+    }
+
+    @Override
+    public void deletePurchaseInfo(String id) {
+        purchaseMapper.deletePurchaseInfo(id);
+    }
+
+
+}

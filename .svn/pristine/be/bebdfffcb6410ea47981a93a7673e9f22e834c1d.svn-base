@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class InvoiceType {
+    private String invtId;
+
+    private String invtName;
+
+    public String getInvtId() {
+        return invtId;
+    }
+
+    public void setInvtId(String invtId) {
+        this.invtId = invtId == null ? null : invtId.trim();
+    }
+
+    public String getInvtName() {
+        return invtName;
+    }
+
+    public void setInvtName(String invtName) {
+        this.invtName = invtName == null ? null : invtName.trim();
+    }
+}

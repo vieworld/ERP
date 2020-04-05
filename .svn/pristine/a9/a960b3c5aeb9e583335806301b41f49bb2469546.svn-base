@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.AddressMapper">
+    
+    <select id="getAllAddress" parameterType="java.lang.String" resultType="com.warehouse.pojo.Address">
+        select  ad_location, ad_detailed from address
+        <where>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+        </where>
+    </select>
+</mapper>

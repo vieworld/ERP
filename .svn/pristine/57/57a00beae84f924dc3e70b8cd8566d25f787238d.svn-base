@@ -1,0 +1,9 @@
+package com.warehouse.mapper;
+
+import org.apache.ibatis.annotations.Param;
+
+import java.util.HashMap;
+
+public interface ProductMaper {
+    int getProductCount(@Param(value = "map") HashMap<String, Object> map);
+}

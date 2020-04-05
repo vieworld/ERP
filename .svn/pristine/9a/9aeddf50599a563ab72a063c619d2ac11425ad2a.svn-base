@@ -1,0 +1,33 @@
+package com.warehouse.pojo;
+
+public class Goods {
+    private String gId;
+
+    private Integer gNumber;
+
+    private Float gMoney;
+
+    public String getgId() {
+        return gId;
+    }
+
+    public void setgId(String gId) {
+        this.gId = gId == null ? null : gId.trim();
+    }
+
+    public Integer getgNumber() {
+        return gNumber;
+    }
+
+    public void setgNumber(Integer gNumber) {
+        this.gNumber = gNumber;
+    }
+
+    public Float getgMoney() {
+        return gMoney;
+    }
+
+    public void setgMoney(Float gMoney) {
+        this.gMoney = gMoney;
+    }
+}

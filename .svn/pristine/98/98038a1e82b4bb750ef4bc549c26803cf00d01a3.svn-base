@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Category;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface CategoryMapper {
+
+    List<Category> getAllCategoryInfo(@Param(value = "username") String username);
+}

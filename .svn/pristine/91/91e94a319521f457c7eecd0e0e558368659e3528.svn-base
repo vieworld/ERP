@@ -1,0 +1,37 @@
+package com.warehouse.service.impl;
+
+import com.warehouse.mapper.AddressMapper;
+import com.warehouse.pojo.Address;
+import com.warehouse.pojo.Users;
+import com.warehouse.service.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class AddressServiceImpl implements AddressService {
+
+    @Autowired
+    private AddressMapper addressMapper;
+
+
+    @Override
+    public List<String> getAllAddress(Users users) {
+
+//        users.setUsername("123");
+
+        List<String> list = new ArrayList<>();
+        List<Address> addressList = addressMapper.getAllAddress(users.getUsername());
+
+//        if(addressList != null){
+        for (Address address : addressList) {
+            list.add(address.getAdLocation()+address.getAdDetailed());
+        }
+//        }
+
+
+        return list;
+    }
+}

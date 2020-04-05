@@ -1,0 +1,11 @@
+package com.warehouse.mapper;
+
+import com.warehouse.pojo.Custom;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface CustomMapper {
+
+    void addCustomList(@Param(value = "list") List<Custom> list);
+}

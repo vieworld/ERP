@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.DepartmentMapper">
+    <select id="getAllInfo" parameterType="java.lang.String" resultType="com.warehouse.pojo.Department">
+        select de_id, de_name from department
+        where username = #{username}
+    </select>
+
+    <insert id="addDepartmentInfo" parameterType="com.warehouse.pojo.Department">
+        insert into department(de_id, de_name, username) values(
+        #{deId},#{deName}, #{username}
+        )
+    </insert>
+
+    <update id="updateDepartmentInfo" parameterType="com.warehouse.pojo.Department">
+        update department
+        set de_name = #{deName}
+        where de_id = #{deId}
+    </update>
+
+    <delete id="deleteDepartmentInfo" parameterType="java.lang.String">
+        delete from department
+        where de_id = #{id}
+    </delete>
+</mapper>

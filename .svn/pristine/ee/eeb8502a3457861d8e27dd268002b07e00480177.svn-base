@@ -1,0 +1,23 @@
+package com.warehouse.pojo;
+
+public class Account {
+    private String acId;
+
+    private String acName;
+
+    public String getAcId() {
+        return acId;
+    }
+
+    public void setAcId(String acId) {
+        this.acId = acId == null ? null : acId.trim();
+    }
+
+    public String getAcName() {
+        return acName;
+    }
+
+    public void setAcName(String acName) {
+        this.acName = acName == null ? null : acName.trim();
+    }
+}
